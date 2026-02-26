@@ -2,7 +2,7 @@
 :root {
     --bg: #000000;
     --text: #ffffff;
-    --accent: #FFC000; /* Luigi's Signature Gold */
+    --accent: #FFC000; 
     --secondary: #a0a0a0;
     --card-bg: #111111;
     --border: #333333;
@@ -18,10 +18,7 @@
 }
 
 /* 2. CORE RESET */
-* { 
-    box-sizing: border-box; 
-    scroll-behavior: smooth; 
-}
+* { box-sizing: border-box; scroll-behavior: smooth; }
 
 body {
     margin: 0;
@@ -49,14 +46,8 @@ aside {
 .logo { font-size: 1.5rem; font-weight: 800; margin: 0; }
 .logo span { color: var(--accent); }
 
-.nav-links {
-    list-style: none;
-    padding: 0;
-    margin: 60px 0;
-}
-
+.nav-links { list-style: none; padding: 0; margin: 60px 0; }
 .nav-links li { margin: 25px 0; }
-
 .nav-links a {
     text-decoration: none;
     color: var(--secondary);
@@ -64,13 +55,8 @@ aside {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 2px;
-    transition: 0.3s;
 }
-
-.nav-links a.active {
-    color: var(--accent) !important;
-    font-weight: 800;
-}
+.nav-links a.active { color: var(--accent) !important; font-weight: 800; }
 
 #theme-toggle {
     background: none;
@@ -80,52 +66,21 @@ aside {
     border-radius: 4px;
     cursor: pointer;
     font-size: 0.7rem;
-    text-transform: uppercase;
 }
 
 /* 4. MAIN CONTENT AREA */
-main {
-    margin-left: var(--nav-width);
-    width: 100%;
-    padding: 0 8%;
-}
+main { margin-left: var(--nav-width); width: 100%; padding: 0 8%; }
 
-section {
-    min-height: 100vh;
-    padding: 120px 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
+section { min-height: 100vh; padding: 120px 0; display: flex; flex-direction: column; justify-content: center; }
 h1 { font-size: 4.5rem; font-weight: 800; margin: 0; letter-spacing: -3px; line-height: 1; }
-h2 { font-size: 2.5rem; margin-bottom: 30px; font-weight: 700; color: var(--text); letter-spacing: -1px; }
+h2 { font-size: 2.5rem; margin-bottom: 30px; font-weight: 700; color: var(--text); }
 
-/* 5. ABOUT SECTION - COMPACT PHOTO EDITION */
-.about-flex {
-    display: flex;
-    align-items: center; /* Vertically centers the smaller photo */
-    gap: 100px;         /* Wide gap for a clean, spaced-out look */
-    padding: 40px 0;
-}
+/* 5. ABOUT SECTION - MINIMALIST */
+.about-flex { display: flex; align-items: center; gap: 80px; padding: 40px 0; }
+.about-text { flex: 2; }
+.about-text p { font-size: 1.15rem; line-height: 1.8; margin-bottom: 24px; color: var(--secondary); }
+.about-text strong { color: var(--text); font-weight: 600; }
 
-.about-text {
-    flex: 2; /* Forces text to take up 65-70% of the room */
-}
-
-.about-text p {
-    font-size: 1.15rem;
-    line-height: 1.8;
-    margin-bottom: 24px;
-    color: var(--secondary);
-}
-
-.about-text strong {
-    color: var(--text);
-    font-weight: 600;
-}
-
-/* Call to Action Box */
 .cta-box {
     margin-top: 40px;
     padding: 35px;
@@ -133,56 +88,19 @@ h2 { font-size: 2.5rem; margin-bottom: 30px; font-weight: 700; color: var(--text
     border-left: 4px solid var(--accent);
     border-radius: 4px;
 }
+.cta-subtitle { font-size: 0.8rem; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 10px; }
+.cta-main { font-size: 1.3rem; font-weight: 600; color: var(--text); margin-bottom: 25px; }
 
-.cta-subtitle {
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: var(--accent);
-    margin-bottom: 10px;
-    font-weight: 700;
-}
-
-.cta-main {
-    font-size: 1.3rem;
-    font-weight: 600;
-    margin-bottom: 25px;
-    color: var(--text);
-}
-
-/* Photo Container - Locked at a Professional Size */
-.about-photo-container {
-    flex: 0.8; /* Tells the browser to keep this container narrow */
-    position: relative;
-    display: flex;
-    justify-content: center;
-}
+.about-photo-container { flex: 1; display: flex; justify-content: center; }
 
 .profile-img-new {
-    width: 100%;
-    max-width: 320px; /* 👈 Strictly limits the size */
-    height: auto;
-    aspect-ratio: 4 / 5;
+    width: 320px;
+    height: 400px;
     object-fit: cover;
     object-position: top;
-    border-radius: 8px;
-    z-index: 2;
-    position: relative;
-    box-shadow: 15px 15px 40px rgba(0,0,0,0.4);
+    border-radius: 12px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
     border: 1px solid var(--border);
-}
-
-.photo-accent-square {
-    position: absolute;
-    width: 100%;
-    max-width: 320px;
-    height: 100%;
-    border: 3px solid var(--accent);
-    top: 15px;
-    left: 15px;
-    z-index: 1;
-    border-radius: 8px;
-    opacity: 0.3;
 }
 
 /* 6. BUTTONS */
@@ -194,43 +112,18 @@ h2 { font-size: 2.5rem; margin-bottom: 30px; font-weight: 700; color: var(--text
     border-radius: 4px;
     text-decoration: none;
     font-weight: 700;
-    transition: 0.3s;
 }
+.btn-primary:hover { transform: translateY(-4px); box-shadow: 0 15px 30px rgba(255, 192, 0, 0.3); }
 
-.btn-primary:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 15px 30px rgba(255, 192, 0, 0.3);
-}
-
-/* 7. PROJECT/SKILL GRIDS */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 25px;
-}
-
-.card {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    padding: 35px;
-    border-radius: 12px;
-}
-
+/* 7. GRID & CARDS */
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
+.card { background: var(--card-bg); border: 1px solid var(--border); padding: 35px; border-radius: 12px; transition: 0.3s; }
 .card:hover { border-color: var(--accent); }
 
-/* 8. FOOTER */
-footer {
-    padding: 60px 0;
-    border-top: 1px solid var(--border);
-    color: var(--secondary);
-    font-size: 0.8rem;
-}
-
-/* 9. MOBILE RESPONSIVE */
+/* 8. MOBILE RESPONSIVE */
 @media (max-width: 1100px) {
     aside { display: none; }
     main { margin-left: 0; padding: 0 6%; }
     .about-flex { flex-direction: column-reverse; gap: 50px; }
-    .profile-img-new { max-width: 280px; } /* Even smaller on mobile */
-    .photo-accent-square { display: none; }
+    .profile-img-new { width: 100%; max-width: 300px; height: 350px; }
 }
