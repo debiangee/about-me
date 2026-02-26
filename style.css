@@ -2,26 +2,23 @@
 :root {
     --bg: #000000;
     --text: #ffffff;
-    --accent: #FFC000; /* Signature Gold/Orange */
+    --accent: #FFC000; /* Luigi's Signature Gold */
     --secondary: #a0a0a0;
-    --card-bg: #111111;
-    --border: #333333;
+    --card-bg: #0a0a0a;
+    --border: #222222;
     --nav-width: 280px;
 }
 
 [data-theme="light"] {
     --bg: #ffffff;
     --text: #111111;
-    --secondary: #666666;
-    --card-bg: #fafafa;
-    --border: #eaeaea;
+    --secondary: #555555;
+    --card-bg: #f5f5f5;
+    --border: #dddddd;
 }
 
 /* 2. CORE RESET */
-* { 
-    box-sizing: border-box; 
-    scroll-behavior: smooth; 
-}
+* { box-sizing: border-box; scroll-behavior: smooth; }
 
 body {
     margin: 0;
@@ -46,17 +43,11 @@ aside {
     z-index: 100;
 }
 
-.logo { font-size: 1.5rem; font-weight: 800; margin: 0; }
+.logo { font-size: 1.5rem; font-weight: 800; }
 .logo span { color: var(--accent); }
 
-.nav-links {
-    list-style: none;
-    padding: 0;
-    margin: 60px 0;
-}
-
+.nav-links { list-style: none; padding: 0; margin: 60px 0; }
 .nav-links li { margin: 25px 0; }
-
 .nav-links a {
     text-decoration: none;
     color: var(--secondary);
@@ -67,10 +58,7 @@ aside {
     transition: 0.3s;
 }
 
-.nav-links a.active {
-    color: var(--accent) !important;
-    font-weight: 800;
-}
+.nav-links a.active { color: var(--accent) !important; font-weight: 800; }
 
 #theme-toggle {
     background: none;
@@ -87,254 +75,144 @@ aside {
 main {
     margin-left: var(--nav-width);
     width: 100%;
-    padding: 0 8%;
+    padding: 0 10%; /* Increased padding for better centering */
 }
 
 section {
     min-height: 100vh;
-    padding: 100px 0;
+    padding: 120px 0; /* Consistent spacing for headers */
     display: flex;
     flex-direction: column;
-    justify-content: center;
 }
 
-/* HERO SECTION - ORANGE NAME */
-h1 { 
-    font-size: 4.5rem; 
-    font-weight: 800; 
-    margin: 0; 
-    letter-spacing: -3px; 
-    line-height: 1; 
-}
-
-.orange-text { 
-    color: var(--accent); 
-}
+/* 5. TITLES */
+h1 { font-size: 4.5rem; font-weight: 800; margin: 0; letter-spacing: -3px; line-height: 1; }
+.orange-text { color: var(--accent); }
 
 h2 { 
-    font-size: 2.8rem; 
-    margin-bottom: 60px; 
+    font-size: 3rem; 
+    margin-bottom: 60px; /* Pushes the title down away from the top */
     font-weight: 800; 
-    color: var(--text); 
-    letter-spacing: -1.5px; 
+    letter-spacing: -1.5px;
 }
 
-/* 5. ABOUT SECTION - REFINED LAYOUT */
+/* 6. ABOUT SECTION - THE AESTHETIC FIX */
 .about-flex {
     display: flex;
     align-items: flex-start;
-    gap: 80px; /* Provides breathing room to prevent cramping */
+    gap: 80px; /* Prevents cramping */
 }
 
 .about-text {
-    flex: 1.5;
-    max-width: 650px;
+    flex: 1.8; /* Gives text more width */
+    max-width: 700px;
 }
 
 .about-text p {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    margin-bottom: 25px;
+    font-size: 1.15rem;
+    line-height: 1.9;
+    margin-bottom: 28px;
     color: var(--secondary);
+    text-align: justify; /* Creates clean vertical lines */
 }
 
-.about-text strong {
-    color: var(--text);
-    font-weight: 600;
-}
+.about-text strong { color: var(--text); font-weight: 600; }
 
+/* Right Sidebar Column */
 .about-right-col {
     flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 25px;
+    gap: 30px;
+    position: sticky; /* Keeps the photo/CTA visible while reading */
+    top: 120px;
 }
 
-/* Photo Container Logic */
 .about-photo-container {
     position: relative;
     width: 320px;
-    height: 400px;
-    cursor: pointer;
-    border-radius: 15px;
+    height: 380px;
+    border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
 }
 
 .profile-img-new {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: top;
     position: absolute;
-    transition: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 1px solid var(--border);
+    transition: 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.img-hover {
-    opacity: 0;
-    z-index: 2;
-}
+.img-hover { opacity: 0; z-index: 2; }
+.about-photo-container:hover .img-hover { opacity: 1; }
 
-.about-photo-container:hover .img-hover {
-    opacity: 1;
-}
-
-/* CTA BOX (Sleek Sidebar Style) */
+/* REFINED CTA BOX */
 .cta-box {
-    width: 320px; /* Matches photo width exactly */
-    padding: 25px;
+    width: 320px; /* Matches photo exactly */
+    padding: 30px;
     background: var(--card-bg);
-    border: 1px solid var(--border);
+    border: 1px solid #1a1a1a;
     border-top: 4px solid var(--accent);
-    border-radius: 12px;
+    border-radius: 15px;
     text-align: center;
 }
 
 .cta-subtitle {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     text-transform: uppercase;
     color: var(--accent);
+    letter-spacing: 2px;
+    font-weight: 800;
     margin-bottom: 12px;
-    font-weight: 700;
-    letter-spacing: 1.5px;
 }
 
 .cta-main {
-    font-size: 1rem;
+    font-size: 1.05rem;
     font-weight: 600;
-    margin-bottom: 20px;
-    color: var(--text);
     line-height: 1.5;
+    margin-bottom: 20px;
 }
 
-.highlight {
-    color: var(--accent);
-}
+.highlight { color: var(--accent); }
 
-/* 6. EXPERIENCE TIMELINE */
-.timeline {
-    position: relative;
-    border-left: 2px solid var(--border);
-    margin-left: 20px;
-    padding-left: 40px;
-}
-
-.timeline-item {
-    position: relative;
-    margin-bottom: 60px;
-}
-
-.timeline-dot {
-    position: absolute;
-    left: -51px;
-    top: 8px;
-    width: 20px;
-    height: 20px;
-    background-color: var(--accent);
-    border-radius: 50%;
-    border: 4px solid var(--bg);
-    box-shadow: 0 0 15px rgba(255, 192, 0, 0.5);
-}
-
-.timeline-content {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    padding: 30px;
-    border-radius: 12px;
-    transition: all 0.4s ease;
-}
-
-.timeline-content:hover {
-    border-color: var(--accent);
-    transform: translateX(12px);
-    box-shadow: 0 10px 40px rgba(0,0,0,0.6);
-}
-
-.timeline-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 12px;
-}
-
-.timeline-header h3 {
-    margin: 0;
-    font-size: 1.4rem;
-    color: var(--accent);
-}
-
-.timeline-date {
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: var(--secondary);
-    font-weight: 700;
-}
-
-.company-name {
-    font-weight: 600;
-    margin-bottom: 15px;
-    color: var(--text);
-    font-size: 1.1rem;
-}
-
-.timeline-content ul {
-    padding-left: 20px;
-    margin: 0;
-}
-
-.timeline-content li {
-    color: var(--secondary);
-    margin-bottom: 10px;
-    line-height: 1.6;
-    font-size: 0.95rem;
-}
-
-/* 7. BUTTONS */
 .btn-primary {
     display: block;
-    background-color: var(--accent);
-    color: #000000;
-    padding: 12px;
-    border-radius: 8px;
+    background: var(--accent);
+    color: #000;
+    padding: 14px;
+    border-radius: 10px;
     text-decoration: none;
     font-weight: 700;
     font-size: 0.9rem;
     transition: 0.3s;
 }
 
-.btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(255, 192, 0, 0.3);
+.btn-primary:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(255, 192, 0, 0.4); }
+
+/* 7. EXPERIENCE TIMELINE */
+.timeline { position: relative; border-left: 2px solid var(--border); margin-left: 20px; padding-left: 40px; }
+.timeline-item { position: relative; margin-bottom: 60px; }
+.timeline-dot {
+    position: absolute; left: -51px; top: 8px; width: 20px; height: 20px;
+    background-color: var(--accent); border-radius: 50%; border: 4px solid var(--bg);
 }
 
-/* 8. FOOTER */
-footer {
-    padding: 60px 0;
-    border-top: 1px solid var(--border);
-    color: var(--secondary);
-    font-size: 0.8rem;
-    text-align: center;
+.timeline-content {
+    background: var(--card-bg); border: 1px solid var(--border); padding: 30px;
+    border-radius: 15px; transition: 0.4s;
 }
+.timeline-content:hover { border-color: var(--accent); transform: translateX(10px); }
 
-/* 9. MOBILE RESPONSIVE */
+/* 8. MOBILE RESPONSIVE */
 @media (max-width: 1100px) {
     aside { display: none; }
     main { margin-left: 0; padding: 0 6%; }
-    .about-flex { 
-        flex-direction: column; 
-        align-items: center; 
-        gap: 50px; 
-    }
-    .about-text { text-align: center; max-width: 100%; }
-    .about-right-col, .cta-box, .about-photo-container {
-        width: 100%;
-        max-width: 320px;
-    }
-    .img-hover { display: none; }
-    h1 { font-size: 3.2rem; }
-    .timeline { margin-left: 10px; padding-left: 25px; }
-    .timeline-dot { left: -36px; }
+    .about-flex { flex-direction: column; align-items: center; gap: 40px; }
+    .about-text { text-align: center; }
+    .about-right-col { position: relative; top: 0; }
+    h1 { font-size: 3.5rem; }
+    h2 { font-size: 2.5rem; text-align: center; }
 }
