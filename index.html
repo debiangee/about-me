@@ -118,18 +118,46 @@
 
         /* Responsive Fix for Mobile */
         @media (max-width: 850px) {
-            body { flex-direction: column; }
+            
+            body {
+                flex-direction: column; /* Stacks Nav on top of Main content */
+            }
+        
             aside {
-                width: 100%;
-                height: auto;
-                position: relative;
+                width: 100%;           /* Nav takes full width */
+                height: auto;          /* Height adjusts to content */
+                position: relative;    /* No longer "sticks" to the side */
                 border-right: none;
                 border-bottom: 1px solid var(--border);
-                padding: 20px;
+                padding: 30px 20px;
+                text-align: center;
             }
-            main { margin-left: 0; padding: 0 5%; }
-            section { min-height: auto; }
-            h1 { font-size: 2.5rem; }
+        
+            .nav-links {
+                display: flex;         /* Makes the menu horizontal on mobile */
+                justify-content: center;
+                flex-wrap: wrap;       /* Wraps links if they are too long */
+                gap: 15px;
+                margin: 20px 0;
+            }
+        
+            .nav-links li {
+                margin: 0;             /* Removes the vertical spacing */
+            }
+        
+            main {
+                margin-left: 0;        /* Removes the gap where the sidebar was */
+                padding: 0 20px;
+            }
+        
+            section {
+                min-height: auto;      /* Sections don't need to be full-screen on mobile */
+                padding: 60px 0;
+            }
+        
+            h1 {
+                font-size: 2.5rem;     /* Shrinks the name so it fits on one line */
+            }
         }
     </style>
 </head>
