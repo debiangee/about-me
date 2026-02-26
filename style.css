@@ -1,7 +1,7 @@
 :root {
     --bg: #000000;
     --text: #ffffff;
-    --accent: #FFC000; /* Your specific color */
+    --accent: #FFC000; /* Your Requested Gold */
     --secondary: #888888;
     --card-bg: #111111;
     --border: #333333;
@@ -16,12 +16,109 @@
     --border: #eaeaea;
 }
 
-/* Add the rest of your CSS here... */
-.highlight {
-    color: var(--accent);
+* { box-sizing: border-box; scroll-behavior: smooth; }
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    display: flex;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
+/* Sidebar Layout */
+aside {
+    width: var(--nav-width);
+    height: 100vh;
+    position: fixed;
+    border-right: 1px solid var(--border);
+    padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.logo { font-size: 1.5rem; font-weight: 800; margin: 0; }
+.logo span { color: var(--accent); }
+
+.nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 60px 0;
+}
+
+.nav-links li { margin: 25px 0; }
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--secondary);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: 0.3s;
+}
+
+/* Active Class Styling */
 .nav-links a.active {
     color: var(--accent) !important;
-    font-weight: 800;
+}
+
+.nav-links a:hover { color: var(--text); }
+
+#theme-toggle {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--secondary);
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Main Content */
+main {
+    margin-left: var(--nav-width);
+    width: 100%;
+    padding: 0 10%;
+}
+
+section {
+    min-height: 100vh;
+    padding: 120px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+h1 { font-size: 4.5rem; font-weight: 800; margin: 0; letter-spacing: -3px; line-height: 1; }
+h2 { font-size: 2.2rem; margin-bottom: 40px; font-weight: 600; }
+.highlight { color: var(--accent); }
+.subtitle { font-size: 1.5rem; color: var(--secondary); margin-top: 15px; }
+
+/* Components */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    padding: 35px;
+    border-radius: 12px;
+}
+
+.tag { color: var(--accent); font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 10px; }
+.contact-link { font-size: 2rem; color: var(--accent); text-decoration: none; font-weight: 800; margin-top: 20px; display: inline-block; }
+footer { padding: 40px 0; border-top: 1px solid var(--border); margin-top: 100px; color: var(--secondary); font-size: 0.8rem; }
+
+/* Hidden mobile fix for future use */
+@media (max-width: 850px) {
+    aside { display: none; } /* Simplified for now per your request */
+    main { margin-left: 0; }
 }
