@@ -2,7 +2,7 @@
 :root {
     --bg: #000000;
     --text: #ffffff;
-    --accent: #FFC000; [cite_start]/* Luigi's Signature Gold/Orange [cite: 14, 15] */
+    --accent: #FFC000; /* Signature Gold/Orange */
     --secondary: #a0a0a0;
     --card-bg: #111111;
     --border: #333333;
@@ -92,7 +92,7 @@ main {
 
 section {
     min-height: 100vh;
-    padding: 120px 0;
+    padding: 100px 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -112,28 +112,29 @@ h1 {
 }
 
 h2 { 
-    font-size: 2.5rem; 
-    margin-bottom: 50px; 
-    font-weight: 700; 
+    font-size: 2.8rem; 
+    margin-bottom: 60px; 
+    font-weight: 800; 
     color: var(--text); 
-    letter-spacing: -1px; 
+    letter-spacing: -1.5px; 
 }
 
-/* 5. ABOUT SECTION - PHOTO & CTA COMBO */
+/* 5. ABOUT SECTION - REFINED LAYOUT */
 .about-flex {
     display: flex;
     align-items: flex-start;
-    gap: 60px;
+    gap: 80px; /* Provides breathing room to prevent cramping */
 }
 
 .about-text {
-    flex: 1.6;
+    flex: 1.5;
+    max-width: 650px;
 }
 
 .about-text p {
     font-size: 1.1rem;
     line-height: 1.8;
-    margin-bottom: 24px;
+    margin-bottom: 25px;
     color: var(--secondary);
 }
 
@@ -147,7 +148,7 @@ h2 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 30px;
+    gap: 25px;
 }
 
 /* Photo Container Logic */
@@ -156,6 +157,9 @@ h2 {
     width: 320px;
     height: 400px;
     cursor: pointer;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
 }
 
 .profile-img-new {
@@ -163,11 +167,9 @@ h2 {
     height: 100%;
     object-fit: cover;
     object-position: top;
-    border-radius: 12px;
     position: absolute;
-    transition: opacity 0.5s ease;
+    transition: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     border: 1px solid var(--border);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
 }
 
 .img-hover {
@@ -179,31 +181,32 @@ h2 {
     opacity: 1;
 }
 
-/* CTA BOX BELOW PHOTO */
+/* CTA BOX (Sleek Sidebar Style) */
 .cta-box {
-    width: 320px;
-    padding: 30px;
+    width: 320px; /* Matches photo width exactly */
+    padding: 25px;
     background: var(--card-bg);
+    border: 1px solid var(--border);
     border-top: 4px solid var(--accent);
-    border-radius: 4px;
+    border-radius: 12px;
     text-align: center;
 }
 
 .cta-subtitle {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     text-transform: uppercase;
     color: var(--accent);
     margin-bottom: 12px;
     font-weight: 700;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
 }
 
 .cta-main {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 600;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     color: var(--text);
-    line-height: 1.4;
+    line-height: 1.5;
 }
 
 .highlight {
@@ -226,7 +229,7 @@ h2 {
 .timeline-dot {
     position: absolute;
     left: -51px;
-    top: 5px;
+    top: 8px;
     width: 20px;
     height: 20px;
     background-color: var(--accent);
@@ -245,7 +248,7 @@ h2 {
 
 .timeline-content:hover {
     border-color: var(--accent);
-    transform: translateX(10px);
+    transform: translateX(12px);
     box-shadow: 0 10px 40px rgba(0,0,0,0.6);
 }
 
@@ -253,7 +256,7 @@ h2 {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
 
 .timeline-header h3 {
@@ -272,9 +275,9 @@ h2 {
 
 .company-name {
     font-weight: 600;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     color: var(--text);
-    font-size: 1.05rem;
+    font-size: 1.1rem;
 }
 
 .timeline-content ul {
@@ -284,18 +287,18 @@ h2 {
 
 .timeline-content li {
     color: var(--secondary);
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     line-height: 1.6;
     font-size: 0.95rem;
 }
 
 /* 7. BUTTONS */
 .btn-primary {
-    display: inline-block;
+    display: block;
     background-color: var(--accent);
     color: #000000;
-    padding: 14px 28px;
-    border-radius: 4px;
+    padding: 12px;
+    border-radius: 8px;
     text-decoration: none;
     font-weight: 700;
     font-size: 0.9rem;
@@ -303,8 +306,8 @@ h2 {
 }
 
 .btn-primary:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 15px 30px rgba(255, 192, 0, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(255, 192, 0, 0.3);
 }
 
 /* 8. FOOTER */
@@ -325,7 +328,7 @@ footer {
         align-items: center; 
         gap: 50px; 
     }
-    .about-text { text-align: center; }
+    .about-text { text-align: center; max-width: 100%; }
     .about-right-col, .cta-box, .about-photo-container {
         width: 100%;
         max-width: 320px;
@@ -334,5 +337,4 @@ footer {
     h1 { font-size: 3.2rem; }
     .timeline { margin-left: 10px; padding-left: 25px; }
     .timeline-dot { left: -36px; }
-    .timeline-header { flex-direction: column; gap: 8px; }
 }
