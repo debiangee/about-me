@@ -2,7 +2,7 @@
 :root {
     --bg: #000000;
     --text: #ffffff;
-    --accent: #FFC000; /* Luigi's Signature Gold */
+    --accent: #FFC000; /* Your Signature Gold */
     --secondary: #888888;
     --card-bg: #111111;
     --border: #333333;
@@ -21,7 +21,6 @@
 * { 
     box-sizing: border-box; 
     scroll-behavior: smooth; 
-    transition: background 0.3s ease, color 0.3s ease;
 }
 
 body {
@@ -29,7 +28,7 @@ body {
     font-family: 'Inter', -apple-system, sans-serif;
     background-color: var(--bg);
     color: var(--text);
-    display: flex; /* Creates the split screen layout */
+    display: flex;
     line-height: 1.6;
 }
 
@@ -65,9 +64,9 @@ aside {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 2px;
+    transition: 0.3s;
 }
 
-/* Scroll-Spy Active State */
 .nav-links a.active {
     color: var(--accent) !important;
     font-weight: 800;
@@ -82,15 +81,9 @@ aside {
     cursor: pointer;
     font-size: 0.7rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
 }
 
-#theme-toggle:hover {
-    border-color: var(--accent);
-    color: var(--text);
-}
-
-/* 4. MAIN CONTENT AREA (RIGHT) */
+/* 4. MAIN CONTENT AREA */
 main {
     margin-left: var(--nav-width);
     width: 100%;
@@ -106,79 +99,84 @@ section {
 }
 
 h1 { font-size: 4.5rem; font-weight: 800; margin: 0; letter-spacing: -3px; line-height: 1; }
-h2 { font-size: 2.2rem; margin-bottom: 40px; font-weight: 600; border-bottom: 1px solid var(--border); padding-bottom: 10px; display: inline-block; }
+h2 { font-size: 2.2rem; margin-bottom: 30px; font-weight: 600; color: var(--text); }
 .highlight { color: var(--accent); }
-.subtitle { font-size: 1.5rem; color: var(--secondary); margin-top: 15px; }
 
-/* 5. ABOUT SECTION - FLEX LAYOUT */
+/* 5. ABOUT SECTION - AESTHETIC FLEX */
 .about-flex {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 50px;
-    margin-top: 20px;
+    gap: 80px;
 }
 
 .about-text {
-    flex: 2;
+    flex: 1.2;
 }
 
-.about-photo {
-    flex: 1.5;              /* Increased from 1 to give the photo more "weight" */
+.lead-text {
+    font-size: 1.4rem;
+    line-height: 1.4;
+    margin-bottom: 20px;
+    color: var(--text);
+    font-weight: 300;
+}
+
+/* Call to Action Box */
+.cta-box {
+    margin-top: 40px;
+    padding: 30px;
+    background: var(--card-bg);
+    border-left: 4px solid var(--accent);
+    border-radius: 4px;
+}
+
+.cta-subtitle {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--secondary);
+    margin-bottom: 10px;
+}
+
+.cta-main {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 25px;
+    line-height: 1.4;
+}
+
+/* Photo Container with Decoration */
+.about-photo-container {
+    flex: 1;
+    position: relative;
     display: flex;
     justify-content: center;
-    min-width: 400px;       /* Forces the container to stay wide */
 }
 
-.profile-img {
-    width: 100%;            /* Fills the parent container's width */
-    height: auto;           /* Maintains aspect ratio without stretching */
-    object-fit: fill;       /* Stretches the image to completely fill the box, ignoring aspect ratio if necessary */
-    max-width: 1000px;      /* Set a large maximum width so it can grow */
-    border-radius: 12px;
-    border: 3px solid var(--accent);
-    box-shadow: 0 20px 50px rgba(255, 192, 0, 0.15);
+.profile-img-new {
+    width: 100%;
+    max-width: 420px;
+    height: 580px; 
+    object-fit: cover;
+    object-position: top;
+    border-radius: 4px;
+    z-index: 2;
+    position: relative;
+    box-shadow: 20px 20px 60px rgba(0,0,0,0.5);
 }
 
-.vertical-line {
-    display: none; /* 👈 Hides the divider */
+.photo-accent-square {
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    border: 8px solid var(--accent);
+    top: -20px;
+    right: 10%;
+    z-index: 1;
+    opacity: 0.2;
 }
 
-/* Divider & CTA inside About */
-.section-divider {
-    border: 0;
-    border-top: 1px solid var(--border);
-    margin: 40px 0 30px 0;
-}
-
-.cta-text {
-    font-size: 1.2rem;
-    color: var(--secondary);
-    margin-bottom: 25px;
-}
-
-.highlight-text {
-    color: var(--text);
-    font-weight: 800;
-}
-
-/* 6. BUTTONS & CARDS */
-.btn-primary {
-    display: inline-block;
-    background-color: var(--accent);
-    color: #000000;
-    padding: 14px 32px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: 700;
-    transition: transform 0.2s ease;
-}
-
-.btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(255, 192, 0, 0.3);
-}
-
+/* 6. COMPONENTS (PROJECTS/SKILLS) */
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -189,10 +187,26 @@ h2 { font-size: 2.2rem; margin-bottom: 40px; font-weight: 600; border-bottom: 1p
     background: var(--card-bg);
     border: 1px solid var(--border);
     padding: 30px;
-    border-radius: 12px;
+    border-radius: 8px;
 }
 
-.card h3 { color: var(--accent); margin-top: 0; }
+.tag { color: var(--accent); font-size: 0.7rem; font-weight: 800; text-transform: uppercase; margin-bottom: 10px; display: block; }
+
+.btn-primary {
+    display: inline-block;
+    background-color: var(--accent);
+    color: #000000;
+    padding: 14px 32px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(255, 192, 0, 0.2);
+}
 
 /* 7. FOOTER */
 footer {
@@ -200,17 +214,14 @@ footer {
     border-top: 1px solid var(--border);
     color: var(--secondary);
     font-size: 0.8rem;
-    text-align: left;
 }
 
-/* 8. MOBILE RESPONSIVENESS */
-@media (max-width: 1024px) {
-    .about-flex {
-        flex-direction: column-reverse; /* Stacks photo on top of text */
-        text-align: center;
-    }
-    .vertical-line { display: none; }
-    aside { display: none; } /* Hide sidebar on mobile for now */
+/* 8. MOBILE RESPONSIVE */
+@media (max-width: 1100px) {
+    aside { display: none; }
     main { margin-left: 0; padding: 0 5%; }
+    .about-flex { flex-direction: column-reverse; gap: 40px; }
+    .profile-img-new { height: 450px; max-width: 100%; }
+    .photo-accent-square { display: none; }
     h1 { font-size: 3rem; }
 }
