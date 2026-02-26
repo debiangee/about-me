@@ -100,18 +100,17 @@ section {
 
 h1 { font-size: 4.5rem; font-weight: 800; margin: 0; letter-spacing: -3px; line-height: 1; }
 h2 { font-size: 2.5rem; margin-bottom: 30px; font-weight: 700; color: var(--text); letter-spacing: -1px; }
-.highlight { color: var(--accent); }
 
-/* 5. ABOUT SECTION - THE AESTHETIC FIX */
+/* 5. ABOUT SECTION - COMPACT PHOTO EDITION */
 .about-flex {
     display: flex;
-    align-items: flex-start; /* Aligns top of text with top of photo */
-    gap: 60px;
+    align-items: center; /* Vertically centers the smaller photo */
+    gap: 100px;         /* Wide gap for a clean, spaced-out look */
     padding: 40px 0;
 }
 
 .about-text {
-    flex: 1.6; /* Gives text significantly more room (65%) */
+    flex: 2; /* Forces text to take up 65-70% of the room */
 }
 
 .about-text p {
@@ -133,7 +132,6 @@ h2 { font-size: 2.5rem; margin-bottom: 30px; font-weight: 700; color: var(--text
     background: var(--card-bg);
     border-left: 4px solid var(--accent);
     border-radius: 4px;
-    box-shadow: 10px 10px 30px rgba(0,0,0,0.2);
 }
 
 .cta-subtitle {
@@ -149,13 +147,12 @@ h2 { font-size: 2.5rem; margin-bottom: 30px; font-weight: 700; color: var(--text
     font-size: 1.3rem;
     font-weight: 600;
     margin-bottom: 25px;
-    line-height: 1.5;
     color: var(--text);
 }
 
-/* Photo Container with Offset Frame */
+/* Photo Container - Locked at a Professional Size */
 .about-photo-container {
-    flex: 1; /* Photo stays at roughly 35-40% */
+    flex: 0.8; /* Tells the browser to keep this container narrow */
     position: relative;
     display: flex;
     justify-content: center;
@@ -163,26 +160,26 @@ h2 { font-size: 2.5rem; margin-bottom: 30px; font-weight: 700; color: var(--text
 
 .profile-img-new {
     width: 100%;
-    max-width: 400px; /* Prevents image from becoming too massive */
+    max-width: 320px; /* 👈 Strictly limits the size */
     height: auto;
-    aspect-ratio: 4 / 5; /* Professional portrait ratio */
+    aspect-ratio: 4 / 5;
     object-fit: cover;
     object-position: top;
     border-radius: 8px;
     z-index: 2;
     position: relative;
-    box-shadow: 20px 20px 60px rgba(0,0,0,0.5);
+    box-shadow: 15px 15px 40px rgba(0,0,0,0.4);
     border: 1px solid var(--border);
 }
 
 .photo-accent-square {
     position: absolute;
     width: 100%;
-    max-width: 400px;
+    max-width: 320px;
     height: 100%;
     border: 3px solid var(--accent);
-    top: 20px;
-    left: 20px;
+    top: 15px;
+    left: 15px;
     z-index: 1;
     border-radius: 8px;
     opacity: 0.3;
@@ -197,10 +194,7 @@ h2 { font-size: 2.5rem; margin-bottom: 30px; font-weight: 700; color: var(--text
     border-radius: 4px;
     text-decoration: none;
     font-weight: 700;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
+    transition: 0.3s;
 }
 
 .btn-primary:hover {
@@ -208,7 +202,7 @@ h2 { font-size: 2.5rem; margin-bottom: 30px; font-weight: 700; color: var(--text
     box-shadow: 0 15px 30px rgba(255, 192, 0, 0.3);
 }
 
-/* 7. GRID & CARDS (FOR PROJECTS/SKILLS) */
+/* 7. PROJECT/SKILL GRIDS */
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -220,20 +214,23 @@ h2 { font-size: 2.5rem; margin-bottom: 30px; font-weight: 700; color: var(--text
     border: 1px solid var(--border);
     padding: 35px;
     border-radius: 12px;
-    transition: border-color 0.3s;
 }
 
-.card:hover {
-    border-color: var(--accent);
+.card:hover { border-color: var(--accent); }
+
+/* 8. FOOTER */
+footer {
+    padding: 60px 0;
+    border-top: 1px solid var(--border);
+    color: var(--secondary);
+    font-size: 0.8rem;
 }
 
-/* 8. MOBILE RESPONSIVE */
+/* 9. MOBILE RESPONSIVE */
 @media (max-width: 1100px) {
     aside { display: none; }
     main { margin-left: 0; padding: 0 6%; }
     .about-flex { flex-direction: column-reverse; gap: 50px; }
-    .about-text { text-align: left; }
-    .profile-img-new { max-width: 100%; height: 500px; }
+    .profile-img-new { max-width: 280px; } /* Even smaller on mobile */
     .photo-accent-square { display: none; }
-    h1 { font-size: 3.2rem; }
 }
