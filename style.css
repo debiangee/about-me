@@ -123,25 +123,27 @@ h2 { font-size: 2.2rem; margin-bottom: 40px; font-weight: 600; border-bottom: 1p
     flex: 2;
 }
 
-.vertical-line {
-    width: 1px;
-    height: 300px;
-    background-color: var(--border);
-}
-
 .about-photo {
     flex: 1;
     display: flex;
     justify-content: center;
+    min-width: 320px; /* This prevents the photo from shrinking too much */
 }
 
 .profile-img {
-    width: 280px;
-    height: 280px;
+    width: 350px;           /* Increased from 280px */
+    height: 350px;          /* Match width for a square/circle */
     object-fit: cover;
     border-radius: 12px;
-    border: 2px solid var(--accent);
-    box-shadow: 0 20px 40px rgba(255, 192, 0, 0.1);
+    border: 3px solid var(--accent); /* Slightly thicker border for the larger size */
+    box-shadow: 0 20px 50px rgba(255, 192, 0, 0.15);
+}
+
+/* Update the vertical line height to match the bigger photo */
+.vertical-line {
+    width: 1px;
+    height: 400px; 
+    background-color: var(--border);
 }
 
 /* Divider & CTA inside About */
