@@ -75,7 +75,7 @@ section { min-height: 100vh; padding: 120px 0; display: flex; flex-direction: co
 h1 { font-size: 4.5rem; font-weight: 800; margin: 0; letter-spacing: -3px; line-height: 1; }
 h2 { font-size: 2.5rem; margin-bottom: 30px; font-weight: 700; color: var(--text); }
 
-/* 5. ABOUT SECTION - MINIMALIST */
+/* 5. ABOUT SECTION - HOVER PHOTO LOGIC */
 .about-flex { display: flex; align-items: center; gap: 80px; padding: 40px 0; }
 .about-text { flex: 2; }
 .about-text p { font-size: 1.15rem; line-height: 1.8; margin-bottom: 24px; color: var(--secondary); }
@@ -91,7 +91,15 @@ h2 { font-size: 2.5rem; margin-bottom: 30px; font-weight: 700; color: var(--text
 .cta-subtitle { font-size: 0.8rem; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 10px; }
 .cta-main { font-size: 1.3rem; font-weight: 600; color: var(--text); margin-bottom: 25px; }
 
-.about-photo-container { flex: 1; display: flex; justify-content: center; }
+/* The Photo Container (The Magic) */
+.about-photo-container { 
+    flex: 1; 
+    display: flex; 
+    justify-content: center; 
+    position: relative; /* Necessary to stack images */
+    width: 320px;
+    height: 400px;
+}
 
 .profile-img-new {
     width: 320px;
@@ -101,6 +109,23 @@ h2 { font-size: 2.5rem; margin-bottom: 30px; font-weight: 700; color: var(--text
     border-radius: 12px;
     box-shadow: 0 20px 50px rgba(0,0,0,0.5);
     border: 1px solid var(--border);
+    transition: opacity 0.5s ease; /* Makes the transition smooth */
+    position: absolute; /* Puts images on top of each other */
+}
+
+/* Transition Logic */
+.img-hover {
+    opacity: 0; /* Hidden by default */
+    z-index: 2;
+}
+
+.img-default {
+    opacity: 1;
+    z-index: 1;
+}
+
+.about-photo-container:hover .img-hover {
+    opacity: 1; /* Shows when container is hovered */
 }
 
 /* 6. BUTTONS */
@@ -125,5 +150,6 @@ h2 { font-size: 2.5rem; margin-bottom: 30px; font-weight: 700; color: var(--text
     aside { display: none; }
     main { margin-left: 0; padding: 0 6%; }
     .about-flex { flex-direction: column-reverse; gap: 50px; }
+    .about-photo-container { width: 100%; max-width: 300px; height: 350px; }
     .profile-img-new { width: 100%; max-width: 300px; height: 350px; }
 }
