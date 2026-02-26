@@ -2,23 +2,26 @@
 :root {
     --bg: #000000;
     --text: #ffffff;
-    --accent: #FFC000; /* Luigi's Signature Gold */
+    --accent: #FFC000; /* Signature Gold/Orange */
     --secondary: #a0a0a0;
-    --card-bg: #0a0a0a;
-    --border: #222222;
+    --card-bg: #111111;
+    --border: #333333;
     --nav-width: 280px;
 }
 
 [data-theme="light"] {
     --bg: #ffffff;
     --text: #111111;
-    --secondary: #555555;
-    --card-bg: #f5f5f5;
-    --border: #dddddd;
+    --secondary: #666666;
+    --card-bg: #fafafa;
+    --border: #eaeaea;
 }
 
 /* 2. CORE RESET */
-* { box-sizing: border-box; scroll-behavior: smooth; }
+* { 
+    box-sizing: border-box; 
+    scroll-behavior: smooth; 
+}
 
 body {
     margin: 0;
@@ -43,11 +46,17 @@ aside {
     z-index: 100;
 }
 
-.logo { font-size: 1.5rem; font-weight: 800; }
+.logo { font-size: 1.5rem; font-weight: 800; margin: 0; }
 .logo span { color: var(--accent); }
 
-.nav-links { list-style: none; padding: 0; margin: 60px 0; }
+.nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 60px 0;
+}
+
 .nav-links li { margin: 25px 0; }
+
 .nav-links a {
     text-decoration: none;
     color: var(--secondary);
@@ -58,7 +67,10 @@ aside {
     transition: 0.3s;
 }
 
-.nav-links a.active { color: var(--accent) !important; font-weight: 800; }
+.nav-links a.active {
+    color: var(--accent) !important;
+    font-weight: 800;
+}
 
 #theme-toggle {
     background: none;
@@ -75,144 +87,264 @@ aside {
 main {
     margin-left: var(--nav-width);
     width: 100%;
-    padding: 0 10%; /* Increased padding for better centering */
+    padding: 0 8%;
 }
 
 section {
     min-height: 100vh;
-    padding: 120px 0; /* Consistent spacing for headers */
+    padding: 120px 0;
     display: flex;
     flex-direction: column;
+    justify-content: center;
 }
 
-/* 5. TITLES */
-h1 { font-size: 4.5rem; font-weight: 800; margin: 0; letter-spacing: -3px; line-height: 1; }
-.orange-text { color: var(--accent); }
+/* HERO SECTION - ORANGE NAME */
+h1 { 
+    font-size: 4.5rem; 
+    font-weight: 800; 
+    margin: 0; 
+    letter-spacing: -3px; 
+    line-height: 1; 
+}
+
+.orange-text { 
+    color: var(--accent); 
+}
 
 h2 { 
-    font-size: 3rem; 
-    margin-bottom: 60px; /* Pushes the title down away from the top */
-    font-weight: 800; 
-    letter-spacing: -1.5px;
+    font-size: 2.5rem; 
+    margin-bottom: 50px; 
+    font-weight: 700; 
+    color: var(--text); 
+    letter-spacing: -1px; 
 }
 
-/* 6. ABOUT SECTION - THE AESTHETIC FIX */
+/* 5. ABOUT SECTION - HOVER SWAP PHOTO */
 .about-flex {
     display: flex;
-    align-items: flex-start;
-    gap: 80px; /* Prevents cramping */
+    align-items: center; 
+    gap: 80px;
+    padding: 40px 0;
 }
 
 .about-text {
-    flex: 1.8; /* Gives text more width */
-    max-width: 700px;
+    flex: 1.6; 
 }
 
 .about-text p {
     font-size: 1.15rem;
-    line-height: 1.9;
-    margin-bottom: 28px;
+    line-height: 1.8;
+    margin-bottom: 24px;
     color: var(--secondary);
-    text-align: justify; /* Creates clean vertical lines */
 }
 
-.about-text strong { color: var(--text); font-weight: 600; }
-
-/* Right Sidebar Column */
-.about-right-col {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-    position: sticky; /* Keeps the photo/CTA visible while reading */
-    top: 120px;
+.about-text strong {
+    color: var(--text);
+    font-weight: 600;
 }
 
-.about-photo-container {
-    position: relative;
-    width: 320px;
-    height: 380px;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
-}
-
-.profile-img-new {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    position: absolute;
-    transition: 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.img-hover { opacity: 0; z-index: 2; }
-.about-photo-container:hover .img-hover { opacity: 1; }
-
-/* REFINED CTA BOX */
+/* Call to Action Box */
 .cta-box {
-    width: 320px; /* Matches photo exactly */
-    padding: 30px;
+    margin-top: 40px;
+    padding: 35px;
     background: var(--card-bg);
-    border: 1px solid #1a1a1a;
-    border-top: 4px solid var(--accent);
-    border-radius: 15px;
-    text-align: center;
+    border-left: 4px solid var(--accent);
+    border-radius: 4px;
 }
 
 .cta-subtitle {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     text-transform: uppercase;
     color: var(--accent);
-    letter-spacing: 2px;
-    font-weight: 800;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
+    font-weight: 700;
 }
 
 .cta-main {
-    font-size: 1.05rem;
+    font-size: 1.3rem;
     font-weight: 600;
-    line-height: 1.5;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    color: var(--text);
 }
 
-.highlight { color: var(--accent); }
-
-.btn-primary {
-    display: block;
-    background: var(--accent);
-    color: #000;
-    padding: 14px;
-    border-radius: 10px;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 0.9rem;
-    transition: 0.3s;
+/* Photo Container Logic - Stacked for Hover */
+.about-photo-container {
+    flex: 1;
+    position: relative;
+    width: 320px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
 }
 
-.btn-primary:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(255, 192, 0, 0.4); }
+.profile-img-new {
+    width: 320px;
+    height: 400px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 12px;
+    z-index: 1;
+    position: absolute;
+    transition: opacity 0.5s ease;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    border: 1px solid var(--border);
+}
 
-/* 7. EXPERIENCE TIMELINE */
-.timeline { position: relative; border-left: 2px solid var(--border); margin-left: 20px; padding-left: 40px; }
-.timeline-item { position: relative; margin-bottom: 60px; }
+.img-hover {
+    opacity: 0;
+    z-index: 2;
+}
+
+.about-photo-container:hover .img-hover {
+    opacity: 1;
+}
+
+/* 6. EXPERIENCE TIMELINE SECTION (The missing part!) */
+
+
+.timeline {
+    position: relative;
+    border-left: 2px solid var(--border);
+    margin-left: 20px;
+    padding-left: 40px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 60px;
+}
+
 .timeline-dot {
-    position: absolute; left: -51px; top: 8px; width: 20px; height: 20px;
-    background-color: var(--accent); border-radius: 50%; border: 4px solid var(--bg);
+    position: absolute;
+    left: -51px;
+    top: 5px;
+    width: 20px;
+    height: 20px;
+    background-color: var(--accent);
+    border-radius: 50%;
+    border: 4px solid var(--bg);
+    box-shadow: 0 0 15px rgba(255, 192, 0, 0.5);
 }
 
 .timeline-content {
-    background: var(--card-bg); border: 1px solid var(--border); padding: 30px;
-    border-radius: 15px; transition: 0.4s;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    padding: 30px;
+    border-radius: 12px;
+    transition: all 0.4s ease;
 }
-.timeline-content:hover { border-color: var(--accent); transform: translateX(10px); }
 
-/* 8. MOBILE RESPONSIVE */
+.timeline-content:hover {
+    border-color: var(--accent);
+    transform: translateX(10px);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+}
+
+.timeline-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.timeline-header h3 {
+    margin: 0;
+    font-size: 1.4rem;
+    color: var(--accent);
+}
+
+.timeline-date {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--secondary);
+    font-weight: 700;
+}
+
+.company-name {
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: var(--text);
+    font-size: 1.05rem;
+}
+
+.timeline-content ul {
+    padding-left: 20px;
+    margin: 0;
+}
+
+.timeline-content li {
+    color: var(--secondary);
+    margin-bottom: 12px;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* 7. BUTTONS */
+.btn-primary {
+    display: inline-block;
+    background-color: var(--accent);
+    color: #000000;
+    padding: 16px 36px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 30px rgba(255, 192, 0, 0.3);
+}
+
+/* 8. GRID & CARDS */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    padding: 35px;
+    border-radius: 12px;
+}
+
+.card:hover { border-color: var(--accent); }
+
+/* 9. FOOTER */
+footer {
+    padding: 60px 0;
+    border-top: 1px solid var(--border);
+    color: var(--secondary);
+    font-size: 0.8rem;
+}
+
+/* 10. MOBILE RESPONSIVE */
 @media (max-width: 1100px) {
     aside { display: none; }
     main { margin-left: 0; padding: 0 6%; }
-    .about-flex { flex-direction: column; align-items: center; gap: 40px; }
-    .about-text { text-align: center; }
-    .about-right-col { position: relative; top: 0; }
-    h1 { font-size: 3.5rem; }
-    h2 { font-size: 2.5rem; text-align: center; }
+    .about-flex { flex-direction: column-reverse; gap: 50px; }
+    
+    /* Ensuring photos stack correctly on mobile */
+    .about-photo-container {
+        width: 100%;
+        max-width: 300px;
+        height: 350px;
+        margin: 0 auto;
+    }
+    .profile-img-new { 
+        position: relative; 
+        width: 100%; 
+        max-width: 300px; 
+        height: 350px; 
+    }
+    .img-hover { display: none; } 
+    h1 { font-size: 3.2rem; }
+
+    .timeline { margin-left: 10px; padding-left: 25px; }
+    .timeline-dot { left: -36px; }
+    .timeline-header { flex-direction: column; gap: 8px; }
 }
