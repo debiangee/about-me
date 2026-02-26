@@ -110,6 +110,12 @@
             border-radius: 8px;
         }
 
+        .highlight {
+            color: #FFC000;
+            /* Optional: If you want it to pop even more in dark mode, you can add a slight text shadow */
+            text-shadow: 0 0 20px rgba(255, 192, 0, 0.2);
+        }
+
         /* Responsive Fix for Mobile */
         @media (max-width: 850px) {
             body { flex-direction: column; }
@@ -146,7 +152,7 @@
 
     <main>
         <section id="home">
-            <h1>Luigi Espiritu</h1>
+            <h1><span class="highlight">Luigi Espiritu</span></h1>
             <p class="subtitle">HR Technology Leader | Driving People Productivity | Championing Process Excellence</p>
         </section>
 
