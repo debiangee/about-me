@@ -131,22 +131,25 @@ h2 { font-size: 2.2rem; margin-bottom: 40px; font-weight: 600; border-bottom: 1p
 }
 
 .profile-img {
-    width: 100%;            /* Responsive width based on the container */
-    max-width: 450px;       /* Maximum size so it doesn't get huge */
-    height: 550px;          /* Increased height for a "portrait" look */
+    width: 100%;            
+    max-width: 450px;       
+    /* 1. Change the height to be shorter or "auto" to prevent aggressive cropping */
+    height: auto;           
+    aspect-ratio: 16 / 9;   /* This matches the horizontal shape of your photo */
     
-    object-fit: cover;      /* Fills the box */
-    object-position: top;   /* 👈 FIX: This ensures your head isn't cut off */
+    /* 2. Contain instead of Cover if you want the whole image visible */
+    object-fit: contain;    
+    background-color: var(--card-bg); /* Fills any empty space with your card color */
     
     border-radius: 12px;
     border: 3px solid var(--accent);
     box-shadow: 0 20px 50px rgba(255, 192, 0, 0.15);
 }
 
-/* Adjust the vertical divider to match the new taller photo */
+/* 3. Adjust the vertical line to not be taller than the photo */
 .vertical-line {
     width: 1px;
-    height: 500px; 
+    height: 200px; /* Reduced to match the wider, shorter photo */
     background-color: var(--border);
 }
 
