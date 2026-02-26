@@ -2,8 +2,8 @@
 :root {
     --bg: #000000;
     --text: #ffffff;
-    --accent: #FFC000; /* Your Signature Gold */
-    --secondary: #888888;
+    --accent: #FFC000; /* Luigi's Signature Gold */
+    --secondary: #a0a0a0;
     --card-bg: #111111;
     --border: #333333;
     --nav-width: 280px;
@@ -32,7 +32,7 @@ body {
     line-height: 1.6;
 }
 
-/* 3. SIDEBAR NAVIGATION (LEFT) */
+/* 3. SIDEBAR NAVIGATION */
 aside {
     width: var(--nav-width);
     height: 100vh;
@@ -99,55 +99,63 @@ section {
 }
 
 h1 { font-size: 4.5rem; font-weight: 800; margin: 0; letter-spacing: -3px; line-height: 1; }
-h2 { font-size: 2.2rem; margin-bottom: 30px; font-weight: 600; color: var(--text); }
+h2 { font-size: 2.5rem; margin-bottom: 30px; font-weight: 700; color: var(--text); letter-spacing: -1px; }
 .highlight { color: var(--accent); }
 
-/* 5. ABOUT SECTION - AESTHETIC FLEX */
+/* 5. ABOUT SECTION - THE AESTHETIC FIX */
 .about-flex {
     display: flex;
-    align-items: center;
-    gap: 80px;
+    align-items: flex-start; /* Aligns top of text with top of photo */
+    gap: 60px;
+    padding: 40px 0;
 }
 
 .about-text {
-    flex: 1.2;
+    flex: 1.6; /* Gives text significantly more room (65%) */
 }
 
-.lead-text {
-    font-size: 1.4rem;
-    line-height: 1.4;
-    margin-bottom: 20px;
+.about-text p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    margin-bottom: 24px;
+    color: var(--secondary);
+}
+
+.about-text strong {
     color: var(--text);
-    font-weight: 300;
+    font-weight: 600;
 }
 
 /* Call to Action Box */
 .cta-box {
     margin-top: 40px;
-    padding: 30px;
+    padding: 35px;
     background: var(--card-bg);
     border-left: 4px solid var(--accent);
     border-radius: 4px;
+    box-shadow: 10px 10px 30px rgba(0,0,0,0.2);
 }
 
 .cta-subtitle {
     font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: var(--secondary);
+    color: var(--accent);
     margin-bottom: 10px;
+    font-weight: 700;
 }
 
 .cta-main {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: 600;
     margin-bottom: 25px;
-    line-height: 1.4;
+    line-height: 1.5;
+    color: var(--text);
 }
 
-/* Photo Container with Decoration */
+/* Photo Container with Offset Frame */
 .about-photo-container {
-    flex: 1;
+    flex: 1; /* Photo stays at roughly 35-40% */
     position: relative;
     display: flex;
     justify-content: center;
@@ -155,73 +163,77 @@ h2 { font-size: 2.2rem; margin-bottom: 30px; font-weight: 600; color: var(--text
 
 .profile-img-new {
     width: 100%;
-    max-width: 420px;
-    height: 580px; 
+    max-width: 400px; /* Prevents image from becoming too massive */
+    height: auto;
+    aspect-ratio: 4 / 5; /* Professional portrait ratio */
     object-fit: cover;
     object-position: top;
-    border-radius: 4px;
+    border-radius: 8px;
     z-index: 2;
     position: relative;
     box-shadow: 20px 20px 60px rgba(0,0,0,0.5);
+    border: 1px solid var(--border);
 }
 
 .photo-accent-square {
     position: absolute;
-    width: 320px;
-    height: 320px;
-    border: 8px solid var(--accent);
-    top: -20px;
-    right: 10%;
+    width: 100%;
+    max-width: 400px;
+    height: 100%;
+    border: 3px solid var(--accent);
+    top: 20px;
+    left: 20px;
     z-index: 1;
-    opacity: 0.2;
+    border-radius: 8px;
+    opacity: 0.3;
 }
 
-/* 6. COMPONENTS (PROJECTS/SKILLS) */
+/* 6. BUTTONS */
+.btn-primary {
+    display: inline-block;
+    background-color: var(--accent);
+    color: #000000;
+    padding: 16px 36px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 30px rgba(255, 192, 0, 0.3);
+}
+
+/* 7. GRID & CARDS (FOR PROJECTS/SKILLS) */
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
 }
 
 .card {
     background: var(--card-bg);
     border: 1px solid var(--border);
-    padding: 30px;
-    border-radius: 8px;
+    padding: 35px;
+    border-radius: 12px;
+    transition: border-color 0.3s;
 }
 
-.tag { color: var(--accent); font-size: 0.7rem; font-weight: 800; text-transform: uppercase; margin-bottom: 10px; display: block; }
-
-.btn-primary {
-    display: inline-block;
-    background-color: var(--accent);
-    color: #000000;
-    padding: 14px 32px;
-    border-radius: 4px;
-    text-decoration: none;
-    font-weight: 700;
-    transition: 0.3s;
-}
-
-.btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(255, 192, 0, 0.2);
-}
-
-/* 7. FOOTER */
-footer {
-    padding: 60px 0;
-    border-top: 1px solid var(--border);
-    color: var(--secondary);
-    font-size: 0.8rem;
+.card:hover {
+    border-color: var(--accent);
 }
 
 /* 8. MOBILE RESPONSIVE */
 @media (max-width: 1100px) {
     aside { display: none; }
-    main { margin-left: 0; padding: 0 5%; }
-    .about-flex { flex-direction: column-reverse; gap: 40px; }
-    .profile-img-new { height: 450px; max-width: 100%; }
+    main { margin-left: 0; padding: 0 6%; }
+    .about-flex { flex-direction: column-reverse; gap: 50px; }
+    .about-text { text-align: left; }
+    .profile-img-new { max-width: 100%; height: 500px; }
     .photo-accent-square { display: none; }
-    h1 { font-size: 3rem; }
+    h1 { font-size: 3.2rem; }
 }
