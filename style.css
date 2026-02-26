@@ -1,0 +1,27 @@
+:root {
+    --bg: #000000;
+    --text: #ffffff;
+    --accent: #FFC000; /* Your specific color */
+    --secondary: #888888;
+    --card-bg: #111111;
+    --border: #333333;
+    --nav-width: 280px;
+}
+
+[data-theme="light"] {
+    --bg: #ffffff;
+    --text: #111111;
+    --secondary: #666666;
+    --card-bg: #fafafa;
+    --border: #eaeaea;
+}
+
+/* Add the rest of your CSS here... */
+.highlight {
+    color: var(--accent);
+}
+
+.nav-links a.active {
+    color: var(--accent) !important;
+    font-weight: 800;
+}
