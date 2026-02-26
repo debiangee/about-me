@@ -1,35 +1,43 @@
+/* PRODUCTION CSS FOR LUIGI GABRIEL ESPIRITU 
+    Architecture: Sidebar + Main Content Split
+    Aesthetic: High-End Dark Mode / Minimalist Gold
+*/
+
 /* 1. VARIABLES & THEMES */
 :root {
     --bg: #000000;
     --text: #ffffff;
-    --accent: #FFC000; /* Signature Gold/Orange */
+    --accent: #FFC000; /* Luigi's Signature Gold */
     --secondary: #a0a0a0;
-    --card-bg: #111111;
-    --border: #333333;
+    --card-bg: #0d0d0d;
+    --border: #222222;
     --nav-width: 280px;
+    --transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 [data-theme="light"] {
     --bg: #ffffff;
     --text: #111111;
-    --secondary: #666666;
-    --card-bg: #fafafa;
-    --border: #eaeaea;
+    --secondary: #555555;
+    --card-bg: #f9f9f9;
+    --border: #e0e0e0;
 }
 
 /* 2. CORE RESET */
 * { 
     box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
     scroll-behavior: smooth; 
 }
 
 body {
-    margin: 0;
     font-family: 'Inter', -apple-system, sans-serif;
     background-color: var(--bg);
     color: var(--text);
     display: flex;
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
 /* 3. SIDEBAR NAVIGATION */
@@ -46,17 +54,11 @@ aside {
     z-index: 100;
 }
 
-.logo { font-size: 1.5rem; font-weight: 800; margin: 0; }
+.logo { font-size: 1.5rem; font-weight: 800; }
 .logo span { color: var(--accent); }
 
-.nav-links {
-    list-style: none;
-    padding: 0;
-    margin: 60px 0;
-}
-
+.nav-links { list-style: none; margin-top: 60px; }
 .nav-links li { margin: 25px 0; }
-
 .nav-links a {
     text-decoration: none;
     color: var(--secondary);
@@ -64,12 +66,11 @@ aside {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 2px;
-    transition: 0.3s;
+    transition: var(--transition);
 }
 
-.nav-links a.active {
-    color: var(--accent) !important;
-    font-weight: 800;
+.nav-links a:hover, .nav-links a.active {
+    color: var(--accent);
 }
 
 #theme-toggle {
@@ -87,136 +88,101 @@ aside {
 main {
     margin-left: var(--nav-width);
     width: 100%;
-    padding: 0 8%;
+    padding: 0 10%;
 }
 
 section {
     min-height: 100vh;
-    padding: 120px 0;
+    padding: 140px 0;
     display: flex;
     flex-direction: column;
-    justify-content: center;
 }
 
-/* TITLES */
-h1 { 
-    font-size: 4.5rem; font-weight: 800; margin: 0; letter-spacing: -3px; line-height: 1; 
-}
-
+h1 { font-size: 4.5rem; font-weight: 800; letter-spacing: -3px; line-height: 1; margin-bottom: 20px;}
 .orange-text { color: var(--accent); }
 
-h2 { 
-    font-size: 2.8rem; /* Refined for production */
-    margin-bottom: 60px; /* Provides the spacing you need so it's not "high up" */
+h2.section-title { 
+    font-size: 3rem; 
+    margin-bottom: 70px; 
     font-weight: 800; 
-    color: var(--text); 
-    letter-spacing: -1.5px; 
+    letter-spacing: -1.5px;
 }
 
-/* 5. ABOUT SECTION - REFINED */
+/* 5. ABOUT SECTION - PHOTO SIDEBAR STYLE */
 .about-flex {
     display: flex;
-    align-items: flex-start; /* Changed to start to prevent cramped vertical feel */
-    gap: 80px;
+    gap: 100px;
+    align-items: flex-start;
 }
 
-.about-text {
-    flex: 1.6; 
-}
-
+.about-text { flex: 1.6; }
 .about-text p {
     font-size: 1.15rem;
-    line-height: 1.8;
-    margin-bottom: 24px;
+    line-height: 1.9;
+    margin-bottom: 28px;
     color: var(--secondary);
 }
+.about-text strong { color: var(--text); }
 
-.about-text strong {
-    color: var(--text);
-    font-weight: 600;
-}
-
-/* RIGHT COLUMN (PHOTO + CTA) */
 .about-right-col {
     flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 30px;
+    position: sticky;
+    top: 100px;
 }
 
 .about-photo-container {
     position: relative;
     width: 320px;
     height: 400px;
+    border-radius: 20px;
+    overflow: hidden;
     cursor: pointer;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
 }
 
 .profile-img-new {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: top;
-    border-radius: 12px;
     position: absolute;
-    transition: opacity 0.5s ease;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-    border: 1px solid var(--border);
+    transition: var(--transition);
 }
 
 .img-hover { opacity: 0; z-index: 2; }
 .about-photo-container:hover .img-hover { opacity: 1; }
 
 .cta-box {
-    width: 320px; /* Matches photo exactly for aesthetic symmetry */
+    width: 320px;
     padding: 30px;
     background: var(--card-bg);
     border-top: 4px solid var(--accent);
-    border-radius: 4px;
+    border-radius: 12px;
     text-align: center;
 }
 
-.cta-subtitle {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 12px;
-    font-weight: 700;
-}
-
-.cta-main {
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 20px;
-    color: var(--text);
-}
-
 /* 6. EXPERIENCE TIMELINE */
-.timeline {
-    position: relative;
-    border-left: 2px solid var(--border);
-    margin-left: 20px;
-    padding-left: 40px;
-}
-
+.timeline { position: relative; border-left: 2px solid var(--border); margin-left: 20px; padding-left: 40px; }
 .timeline-item { position: relative; margin-bottom: 60px; }
-
 .timeline-dot {
-    position: absolute; left: -51px; top: 5px; width: 20px; height: 20px;
+    position: absolute; left: -51px; top: 10px; width: 20px; height: 20px;
     background-color: var(--accent); border-radius: 50%; border: 4px solid var(--bg);
-    box-shadow: 0 0 15px rgba(255, 192, 0, 0.5);
 }
 
 .timeline-content {
     background: var(--card-bg); border: 1px solid var(--border);
-    padding: 30px; border-radius: 12px; transition: 0.4s ease;
+    padding: 35px; border-radius: 15px; transition: var(--transition);
 }
+.timeline-content:hover { border-color: var(--accent); transform: translateX(10px); }
 
-.timeline-content:hover {
-    border-color: var(--accent); transform: translateX(10px);
-}
+.timeline-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 15px; }
+.timeline-header h3 { color: var(--accent); font-size: 1.5rem; }
+.timeline-date { font-size: 0.8rem; font-weight: 700; color: var(--secondary); letter-spacing: 1px; }
 
-/* 7. NEW CONTACT SPLIT SECTION (The Production Part) */
+/* 7. AESTHETIC CONTACT SECTION (SPLIT) */
 .contact-split {
     display: flex;
     gap: 80px;
@@ -224,58 +190,70 @@ h2 {
 }
 
 .contact-left { flex: 1; }
-
-.contact-right {
-    flex: 1.2;
-    background: var(--card-bg);
-    padding: 40px;
-    border-radius: 15px;
+.contact-right { 
+    flex: 1.2; 
+    background: var(--card-bg); 
+    padding: 45px; 
+    border-radius: 24px; 
     border: 1px solid var(--border);
 }
 
-.cta-social-card {
+/* Social Cards */
+.cta-social-stack { display: flex; flex-direction: column; gap: 20px; }
+
+.social-card {
     display: flex;
     align-items: center;
-    gap: 15px;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.03);
+    padding: 22px;
+    background: rgba(255, 255, 255, 0.02);
     border: 1px solid var(--border);
-    border-radius: 10px;
+    border-radius: 16px;
     text-decoration: none;
-    margin-bottom: 15px;
-    transition: 0.3s;
+    transition: var(--transition);
 }
 
-.cta-social-card:hover {
-    transform: translateX(10px);
+.social-card:hover {
+    transform: translateX(12px);
+    background: rgba(255, 192, 0, 0.05);
     border-color: var(--accent);
 }
 
-/* EMAILJS FORM INPUTS */
-.email-form { display: flex; flex-direction: column; gap: 20px; }
-.form-group { display: flex; flex-direction: column; gap: 8px; }
+.social-icon {
+    width: 50px; height: 50px;
+    background: rgba(255, 192, 0, 0.1);
+    color: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 12px; font-weight: 900; margin-right: 20px;
+}
+
+.social-tag { display: block; font-size: 0.7rem; color: var(--accent); font-weight: 700; text-transform: uppercase; margin-bottom: 4px; }
+.social-title { font-size: 1.1rem; font-weight: 600; color: var(--text); }
+
+/* EmailJS Form */
+.email-form { display: flex; flex-direction: column; gap: 25px; }
+.form-group label { font-size: 0.75rem; text-transform: uppercase; color: var(--secondary); font-weight: 700; margin-bottom: 8px; display: block; }
 .form-group input, .form-group textarea {
-    padding: 15px; background: #000; border: 1px solid var(--border);
-    border-radius: 8px; color: #fff; font-family: inherit;
+    width: 100%; padding: 16px; background: #000; border: 1px solid var(--border);
+    border-radius: 12px; color: #fff; font-family: inherit; font-size: 1rem;
 }
-.form-group input:focus, .form-group textarea:focus {
-    outline: none; border-color: var(--accent);
+.form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--accent); }
+
+.send-btn {
+    background: var(--accent); color: #000; padding: 18px; border: none;
+    border-radius: 12px; font-weight: 800; cursor: pointer; transition: var(--transition);
 }
+.send-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(255, 192, 0, 0.3); }
 
-/* BUTTONS */
-.btn-primary, .send-btn {
-    display: inline-block; background-color: var(--accent); color: #000;
-    padding: 16px 36px; border-radius: 4px; text-decoration: none;
-    font-weight: 700; border: none; cursor: pointer; transition: 0.3s;
-}
+/* 8. FOOTER */
+footer { padding: 60px 0; border-top: 1px solid var(--border); color: var(--secondary); text-align: center; font-size: 0.85rem; }
 
-.send-btn { width: 100%; }
-.send-btn:hover { transform: translateY(-4px); box-shadow: 0 10px 20px rgba(255, 192, 0, 0.3); }
-
-/* 8. MOBILE RESPONSIVE */
+/* 9. MOBILE RESPONSIVE */
 @media (max-width: 1100px) {
     aside { display: none; }
     main { margin-left: 0; padding: 0 6%; }
-    .about-flex, .contact-split { flex-direction: column; gap: 40px; }
-    .about-photo-container, .cta-box { width: 100%; max-width: 320px; margin: 0 auto; }
+    .about-flex, .contact-split { flex-direction: column; align-items: center; gap: 50px; }
+    .about-text, .contact-left { text-align: center; }
+    .about-right-col { position: relative; top: 0; }
+    .about-photo-container, .cta-box, .social-card, .contact-right { width: 100%; max-width: 400px; }
+    h1 { font-size: 3.5rem; }
 }
