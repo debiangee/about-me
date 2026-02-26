@@ -180,3 +180,36 @@ footer { padding: 40px 0; border-top: 1px solid var(--border); margin-top: 100px
     transform: translateY(-3px);
     box-shadow: 0 10px 20px rgba(255, 192, 0, 0.2);
 }
+
+/* Container for the side-by-side layout */
+.about-flex {
+    display: flex;
+    align-items: center; /* Vertically centers the text and photo */
+    gap: 40px;           /* Space between text and divider/photo */
+}
+
+.about-text {
+    flex: 2; /* Takes up more space than the photo */
+}
+
+/* The Vertical Divider */
+.vertical-line {
+    width: 1px;
+    height: 250px; /* Adjust height as needed */
+    background-color: var(--border);
+}
+
+.about-photo {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.profile-img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px; /* Slightly rounded corners for a modern look */
+    border: 2px solid var(--accent);
+    box-shadow: 0 10px 30px rgba(255, 192, 0, 0.1);
+}
