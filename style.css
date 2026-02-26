@@ -122,3 +122,22 @@ footer { padding: 40px 0; border-top: 1px solid var(--border); margin-top: 100px
     aside { display: none; } /* Simplified for now per your request */
     main { margin-left: 0; }
 }
+
+.btn-primary {
+    display: inline-block;
+    background-color: var(--accent);
+    color: #000000; /* Keeps text readable on the gold background */
+    padding: 12px 28px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-top: 25px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px); /* Lifts the button slightly on hover */
+    box-shadow: 0 10px 20px rgba(255, 192, 0, 0.3);
+    color: #000000;
+}
