@@ -457,3 +457,13 @@ footer {
 }
 
 section { position: relative; }
+
+/* Target only the h2 inside the projects section */
+#projects h2.section-title {
+    margin-bottom: 20px; /* Reduced from 60px to 20px */
+}
+
+/* Also ensure the grid doesn't have extra top padding */
+.projects-grid {
+    padding-top: 0; 
+}
