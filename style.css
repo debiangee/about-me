@@ -423,7 +423,7 @@ footer {
 /* Moderate move up (Great for About Me) */
 .sub-2 {
     min-height: auto !important;
-    padding-top: 80px !important;   /* Medium gap */
+    padding-top: 60px !important;   /* Medium gap */
     padding-bottom: 80px !important;
     display: block !important;
 }
