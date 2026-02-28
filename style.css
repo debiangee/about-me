@@ -384,3 +384,25 @@ footer {
     aside, main { display: none; }
     body { overflow: hidden; }
 }
+
+/* Keep the Home/Hero section exactly as it is */
+#home {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Create a new class for the other sections to move them UP */
+.sub-section {
+    min-height: auto !important; 
+    padding-top: 40px !important; /* This moves the Title up */
+    padding-bottom: 80px !important;
+    display: block !important; /* Removes the centering 'flex' behavior */
+}
+
+/* Adjust the H2 margin so it sits at the very top of the section */
+.sub-section h2 {
+    margin-top: 0;
+    margin-bottom: 40px;
+}
