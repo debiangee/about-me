@@ -442,7 +442,7 @@ footer {
 
 /* 12. SPACING HELPERS */
 .sub-1 { min-height: auto !important; padding-top: 40px !important; padding-bottom: 60px !important; display: block !important; }
-.sub-2 { min-height: auto !important; padding-top: 60px !important; padding-bottom: 85px !important; display: block !important; }
+.sub-2 { min-height: auto !important; padding-top: 60px !important; padding-bottom: 85.5px !important; display: block !important; }
 .sub-3 { min-height: auto !important; padding-top: 120px !important; padding-bottom: 100px !important; display: block !important; }
 
 /* 13. NAV TRIGGER */
