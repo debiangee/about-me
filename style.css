@@ -379,7 +379,7 @@ footer {
 }
 
 .project-card {
-    flex: 0 0 350px;         /* Keep card width fixed in carousel */
+    flex: 0 0 500px;         /* Keep card width fixed in carousel */
     background: var(--card-bg);
     border: 1px solid var(--border);
     border-radius: 16px;
