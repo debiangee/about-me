@@ -436,16 +436,17 @@ footer {
     display: block !important;
 }
 
+/* Update this in your style.css */
 .nav-trigger {
     position: absolute;
-    top: 20%; /* The trigger sits 20% down into the section */
+    top: 150px; /* This moves the "Hidden Message" down so the jump lands on it */
     left: 0;
-    width: 1px;
     height: 1px;
+    width: 1px;
     opacity: 0;
     pointer-events: none;
 }
 
-section {
-    position: relative; /* This is required so the trigger stays inside the section */
+section { 
+    position: relative; 
 }
