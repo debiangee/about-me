@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'home': 100,
         'about': 200,
         'projects': 250,
+        'skills': 200,
         'experience': 200,
         'contact': 100
     };
