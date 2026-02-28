@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     
     // --- 1. EMAILJS INITIALIZATION ---
+    // Replace with your Public Key from EmailJS Account > API Keys
     emailjs.init("_hEdz8OStmdG5Vwu3"); 
 
     // --- 2. THEME TOGGLE ---
@@ -15,23 +16,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- 3. SCROLL SPY LOGIC (ADJUSTED FOR LAPTOPS) ---
-    const sections = document.querySelectorAll("section");
+    // --- 3. SCROLL SPY LOGIC (NAV-TRIGGER VERSION) ---
+    const triggers = document.querySelectorAll(".nav-trigger");
     const navLinks = document.querySelectorAll(".nav-links a");
 
-    // Use a smaller threshold so sections highlight as soon as they appear
-    // and use rootMargin to detect the section when it's in the top half of the screen
     const options = {
-        threshold: 0.2, 
-        rootMargin: "-10% 0px -70% 0px" 
+        // rootMargin creates a horizontal "tripwire" near the top of the screen
+        rootMargin: "-15% 0px -80% 0px", 
+        threshold: 0 
     };
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
+            // When the tiny trigger hits the tripwire
             if (entry.isIntersecting) {
                 navLinks.forEach((link) => link.classList.remove("active"));
-                const id = entry.target.getAttribute("id");
+                
+                // Get the ID from the data-ref attribute of the trigger
+                const id = entry.target.getAttribute("data-ref");
                 const activeLink = document.querySelector(`.nav-links a[href="#${id}"]`);
+                
                 if (activeLink) {
                     activeLink.classList.add("active");
                 }
@@ -39,17 +43,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, options);
 
-    sections.forEach((section) => {
-        observer.observe(section);
-    });
-
-    // Special Check: If scrolled to the very bottom, highlight Contact
-    window.addEventListener('scroll', () => {
-        if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight - 5) {
-            navLinks.forEach((link) => link.classList.remove("active"));
-            const contactLink = document.querySelector('.nav-links a[href="#contact"]');
-            if (contactLink) contactLink.classList.add("active");
-        }
+    triggers.forEach((trigger) => {
+        observer.observe(trigger);
     });
 
     // --- 4. EMAILJS FORM SUBMISSION ---
@@ -62,17 +57,21 @@ document.addEventListener('DOMContentLoaded', () => {
             const submitBtn = this.querySelector('.send-btn');
             const originalText = submitBtn.innerText;
             
+            // Visual feedback: Loading
             submitBtn.innerText = "Sending...";
             submitBtn.style.opacity = "0.7";
             submitBtn.disabled = true;
 
+            // Send form using Service ID and Template ID
             emailjs.sendForm('service_vq5kttj', 'template_txin8we', this)
                 .then(() => {
+                    // Aesthetic Success State
                     submitBtn.innerText = "Message Sent! ✓";
-                    submitBtn.style.backgroundColor = "#28a745";
+                    submitBtn.style.backgroundColor = "#28a745"; // Success green
                     submitBtn.style.color = "#fff";
                     this.reset();
 
+                    // Reset button after 3 seconds
                     setTimeout(() => {
                         submitBtn.innerText = originalText;
                         submitBtn.style.backgroundColor = ""; 
