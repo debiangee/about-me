@@ -403,7 +403,7 @@ footer {
 }
 
 /* 11. MEDIA QUERIES (Trigger Mobile Overlay) */
-@media (max-width: 1100px) {
+@media (max-width: 1024px) {
     #mobile-overlay { display: flex; }
     /* Hide the rest of the site to prevent scroll-under bugs */
     aside, main { display: none !important; }
