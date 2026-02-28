@@ -543,7 +543,7 @@ section { position: relative; }
     color: var(--text);
 }
 
-/* Target only the h2 inside the projects section */
+/* Target only the h2 inside the skills section */
 #skills h2.section-title {
     margin-bottom: 20px; /* Reduced from 60px to 20px */
 }
