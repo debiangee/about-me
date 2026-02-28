@@ -2,11 +2,12 @@
 :root {
     --bg: #000000;
     --text: #ffffff;
-    --accent: #FFC000; 
+    --accent: #FFC000; /* Signature Gold/Orange */
     --secondary: #a0a0a0;
     --card-bg: #111111;
     --border: #333333;
-    --nav-width: clamp(240px, 18vw, 280px); /* UPDATED: Fluid width for smaller laptops */
+    /* UPDATED: Sidebar width now scales down on smaller laptops */
+    --nav-width: clamp(240px, 18vw, 280px);
 }
 
 [data-theme="light"] {
@@ -38,7 +39,8 @@ aside {
     height: 100vh;
     position: fixed;
     border-right: 1px solid var(--border);
-    padding: 60px clamp(20px, 3vw, 40px); /* UPDATED: Fluid padding */
+    /* UPDATED: Sidebar padding shrinks slightly on small laptops */
+    padding: 60px clamp(20px, 3vw, 40px);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -86,8 +88,9 @@ aside {
 /* 4. MAIN CONTENT AREA */
 main {
     margin-left: var(--nav-width);
-    width: calc(100% - var(--nav-width)); /* UPDATED: Dynamic calculation */
-    padding: 0 6%; /* UPDATED: Slightly less padding for laptop breathing room */
+    width: calc(100% - var(--nav-width));
+    /* UPDATED: Side padding reduced for smaller laptop screens */
+    padding: 0 6%;
 }
 
 section {
@@ -100,25 +103,27 @@ section {
 
 /* TITLES */
 h1 { 
-    font-size: clamp(3rem, 6vw, 4.5rem); /* UPDATED: Text shrinks on smaller laptops */
+    /* UPDATED: Font shrinks automatically on smaller screens */
+    font-size: clamp(3rem, 6vw, 4.5rem); 
     font-weight: 800; margin: 0; letter-spacing: -3px; line-height: 1; 
 }
 
 .orange-text { color: var(--accent); }
 
 h2 { 
-    font-size: clamp(2rem, 4vw, 2.8rem); /* UPDATED: Fluid header */
+    font-size: clamp(2.2rem, 4vw, 2.8rem); 
     margin-bottom: 60px; 
     font-weight: 800; 
     color: var(--text); 
     letter-spacing: -1.5px; 
 }
 
-/* 5. ABOUT SECTION */
+/* 5. ABOUT SECTION - REFINED */
 .about-flex {
     display: flex;
     align-items: flex-start; 
-    gap: clamp(30px, 5vw, 80px); /* UPDATED: Gap shrinks on laptops */
+    /* UPDATED: Gap closes up on laptops to prevent text squeezing */
+    gap: clamp(30px, 5vw, 80px);
 }
 
 .about-text {
@@ -126,7 +131,7 @@ h2 {
 }
 
 .about-text p {
-    font-size: 1.15rem;
+    font-size: clamp(1rem, 1.2vw, 1.15rem);
     line-height: 1.8;
     margin-bottom: 24px;
     color: var(--secondary);
@@ -148,8 +153,9 @@ h2 {
 
 .about-photo-container {
     position: relative;
-    width: clamp(260px, 25vw, 320px); /* UPDATED: Photo scales down */
-    height: clamp(325px, 32vw, 400px); /* UPDATED: Height scales down */
+    /* UPDATED: Photo container scales with screen size */
+    width: clamp(260px, 25vw, 320px);
+    height: clamp(325px, 32vw, 400px);
     cursor: pointer;
 }
 
@@ -169,7 +175,7 @@ h2 {
 .about-photo-container:hover .img-hover { opacity: 1; }
 
 .cta-box {
-    width: clamp(260px, 25vw, 320px); /* UPDATED: Matches photo width */
+    width: clamp(260px, 25vw, 320px); 
     padding: 30px;
     background: var(--card-bg);
     border-top: 4px solid var(--accent);
@@ -234,16 +240,14 @@ h2 {
     color: var(--secondary);
 }
 
-/* 7. UPDATED CONTACT SPLIT SECTION */
+/* 7. CONTACT SECTION */
 .contact-split {
     display: flex;
-    gap: clamp(30px, 5vw, 80px); /* UPDATED: Fluid gap */
+    gap: clamp(30px, 5vw, 80px);
     align-items: flex-start;
 }
 
-.contact-left { 
-    flex: 1; 
-}
+.contact-left { flex: 1; }
 
 .contact-description {
     font-size: 1.1rem;
@@ -259,7 +263,6 @@ h2 {
     border: 1px solid var(--border);
 }
 
-/* SOCIAL CARDS */
 .cta-social-stack {
     display: flex;
     flex-direction: column;
@@ -297,70 +300,24 @@ h2 {
     border-radius: 8px;
 }
 
-.social-info-text {
-    display: flex;
-    flex-direction: column;
-}
+.social-info-text { display: flex; flex-direction: column; }
+.social-tag-small { font-size: 0.7rem; text-transform: uppercase; color: var(--accent); font-weight: 700; letter-spacing: 1px; }
+.social-title-bold { font-size: 1.1rem; font-weight: 600; color: var(--text); }
 
-.social-tag-small {
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    color: var(--accent);
-    font-weight: 700;
-    letter-spacing: 1px;
-}
-
-.social-title-bold {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--text);
-}
-
-/* EMAILJS FORM INPUTS */
 .email-form { display: flex; flex-direction: column; gap: 20px; }
 .form-group { display: flex; flex-direction: column; gap: 8px; }
-
-.form-group label {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    color: var(--secondary);
-    font-weight: 700;
-}
-
+.form-group label { font-size: 0.75rem; text-transform: uppercase; color: var(--secondary); font-weight: 700; }
 .form-group input, .form-group textarea {
-    padding: 15px; 
-    background: #000; 
-    border: 1px solid var(--border);
-    border-radius: 8px; 
-    color: #fff; 
-    font-family: inherit;
-    font-size: 1rem;
+    padding: 15px; background: #000; border: 1px solid var(--border);
+    border-radius: 8px; color: #fff; font-family: inherit; font-size: 1rem;
 }
+.form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--accent); }
 
-.form-group input:focus, .form-group textarea:focus {
-    outline: none; 
-    border-color: var(--accent);
+.send-btn { 
+    width: 100%; margin-top: 10px; background-color: var(--accent); color: #000;
+    padding: 16px 36px; border-radius: 4px; font-weight: 700; border: none; cursor: pointer; transition: 0.3s;
 }
-
-/* BUTTONS */
-.btn-primary, .send-btn {
-    display: inline-block; 
-    background-color: var(--accent); 
-    color: #000;
-    padding: 16px 36px; 
-    border-radius: 4px; 
-    text-decoration: none;
-    font-weight: 700; 
-    border: none; 
-    cursor: pointer; 
-    transition: 0.3s;
-}
-
-.send-btn { width: 100%; margin-top: 10px; }
-.send-btn:hover { 
-    transform: translateY(-4px); 
-    box-shadow: 0 10px 20px rgba(255, 192, 0, 0.3); 
-}
+.send-btn:hover { transform: translateY(-4px); box-shadow: 0 10px 20px rgba(255, 192, 0, 0.3); }
 
 /* 8. FOOTER */
 footer {
@@ -371,7 +328,35 @@ footer {
     text-align: center;
 }
 
-/* 9. MOBILE COMING SOON OVERLAY (UPDATED: Added this as requested) */
+/* 9. PROJECTS & EVENTS GRID */
+.projects-grid {
+    display: grid;
+    /* UPDATED: Cards shrink slightly to fit small laptops */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.project-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden; 
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.project-card:hover { transform: translateY(-10px); border-color: var(--accent); }
+.project-image-wrapper { position: relative; width: 100%; height: 200px; overflow: hidden; }
+.project-img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s ease; }
+.project-card:hover .project-img { transform: scale(1.1); }
+.project-badge { position: absolute; top: 15px; right: 15px; background: var(--accent); color: #000; padding: 5px 12px; border-radius: 4px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; }
+.project-content { padding: 25px; }
+.project-tag { font-size: 0.75rem; color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px; display: block; }
+.project-content h3 { font-size: 1.3rem; margin-bottom: 12px; color: var(--text); }
+.project-content p { font-size: 0.9rem; color: var(--secondary); line-height: 1.6; margin-bottom: 20px; }
+.project-meta { display: flex; gap: 10px; flex-wrap: wrap; }
+.meta-item { font-size: 0.7rem; padding: 4px 10px; background: rgba(255, 192, 0, 0.1); color: var(--accent); border: 1px solid rgba(255, 192, 0, 0.2); border-radius: 4px; font-weight: 600; }
+
+/* 10. MOBILE OVERLAY SECTION (Hidden on Desktop) */
 #mobile-overlay {
     display: none; 
     position: fixed;
@@ -386,115 +371,16 @@ footer {
     flex-direction: column;
 }
 
-.overlay-content h1 {
-    font-size: 2.2rem !important;
-    margin-bottom: 20px;
-}
-
-.overlay-content p {
-    color: var(--secondary);
-    margin-bottom: 30px;
-}
-
-.overlay-logo { font-size: 1.5rem; font-weight: 800; margin-bottom: 20px; }
+.overlay-content h1 { font-size: 2.2rem !important; margin-bottom: 20px; letter-spacing: -1px !important; }
+.overlay-content p { color: var(--secondary); margin-bottom: 30px; font-size: 1.1rem; }
+.overlay-logo { font-size: 1.8rem; font-weight: 800; margin-bottom: 30px; }
 .overlay-logo span { color: var(--accent); }
+.gold-divider { width: 40px; height: 2px; background: var(--accent); margin: 0 auto 20px auto; }
 
-/* MOBILE RESPONSIVE TRIGGER */
+/* 11. MEDIA QUERIES (Trigger Mobile Overlay) */
 @media (max-width: 1100px) {
     #mobile-overlay { display: flex; }
-    aside, main { display: none; } /* Hide the bugged version */
-}
-
-/* PROJECTS & EVENTS GRID */
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* UPDATED: minmax 300px works better on small laptops */
-    gap: 30px; /* UPDATED: Slighting tighter gap */
-}
-
-.project-card {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    overflow: hidden; 
-    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.project-card:hover {
-    transform: translateY(-10px);
-    border-color: var(--accent);
-}
-
-.project-image-wrapper {
-    position: relative;
-    width: 100%;
-    height: 200px; /* UPDATED: Slightly shorter for laptop screens */
-    overflow: hidden;
-}
-
-.project-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: 0.5s ease;
-}
-
-.project-card:hover .project-img {
-    transform: scale(1.1);
-}
-
-.project-badge {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: var(--accent);
-    color: #000;
-    padding: 5px 12px;
-    border-radius: 4px;
-    font-size: 0.7rem;
-    font-weight: 800;
-    text-transform: uppercase;
-}
-
-.project-content {
-    padding: 25px; /* UPDATED: Slightly less padding */
-}
-
-.project-tag {
-    font-size: 0.75rem;
-    color: var(--accent);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    margin-bottom: 10px;
-    display: block;
-}
-
-.project-content h3 {
-    font-size: 1.3rem; /* UPDATED: Fluid sizing */
-    margin-bottom: 12px;
-    color: var(--text);
-}
-
-.project-content p {
-    font-size: 0.9rem; /* UPDATED: Fluid sizing */
-    color: var(--secondary);
-    line-height: 1.6;
-    margin-bottom: 20px;
-}
-
-.project-meta {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-}
-
-.meta-item {
-    font-size: 0.7rem;
-    padding: 4px 10px;
-    background: rgba(255, 192, 0, 0.1);
-    color: var(--accent);
-    border: 1px solid rgba(255, 192, 0, 0.2);
-    border-radius: 4px;
-    font-weight: 600;
+    /* Hide the rest of the site to prevent bugs */
+    aside, main { display: none; }
+    body { overflow: hidden; }
 }
