@@ -467,3 +467,67 @@ section { position: relative; }
 .projects-grid {
     padding-top: 0; 
 }
+
+/* 14. SKILLS SECTION STYLES */
+.skills-container {
+    display: grid;
+    /* 2 columns on laptops, 1 column on very small screens */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.skill-category {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    padding: 30px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-category:hover {
+    border-color: var(--accent);
+    transform: translateY(-5px);
+    background: rgba(255, 192, 0, 0.02);
+}
+
+.skill-icon {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.skill-category h3 {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    color: var(--text);
+    font-weight: 700;
+}
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skill-tags span {
+    font-size: 0.75rem;
+    padding: 6px 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    color: var(--secondary);
+    transition: 0.3s;
+}
+
+/* On hover, highlight the specific skill tags */
+.skill-category:hover .skill-tags span {
+    border-color: rgba(255, 192, 0, 0.3);
+    color: var(--text);
+}
+
+/* Light Mode Adjustments */
+[data-theme="light"] .skill-tags span {
+    background: #f0f0f0;
+    color: #444;
+}
