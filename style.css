@@ -1,4 +1,4 @@
-/* 1. FLUID VARIABLES & THEMES */
+/* 1. VARIABLES */
 :root {
     --bg: #000000;
     --text: #ffffff;
@@ -6,7 +6,7 @@
     --secondary: #a0a0a0;
     --card-bg: #111111;
     --border: #333333;
-    /* Sidebar width scales: smaller on laptops, fixed on desktop */
+    /* Sidebar scales between 220px and 280px based on screen width */
     --nav-width: clamp(220px, 18vw, 280px);
 }
 
@@ -18,24 +18,27 @@
     --border: #eaeaea;
 }
 
-/* 2. CORE RESET */
-* { margin: 0; padding: 0; box-sizing: border-box; }
+/* 2. RESET & CORE FLUIDITY */
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
 
 html { 
     scroll-behavior: smooth; 
-    scroll-padding-top: 80px; /* Prevents titles from hiding under the top edge */
+    scroll-padding-top: 80px; 
 }
 
 body {
     font-family: 'Inter', sans-serif;
     background-color: var(--bg);
     color: var(--text);
-    display: flex; 
+    display: flex; /* Keeps Sidebar and Main side-by-side */
     min-height: 100vh;
-    overflow-x: hidden;
 }
 
-/* 3. SIDEBAR (Fixed and Scalable) */
+/* 3. SIDEBAR (Fixed) */
 aside {
     width: var(--nav-width);
     height: 100vh;
@@ -43,7 +46,7 @@ aside {
     left: 0;
     top: 0;
     border-right: 1px solid var(--border);
-    padding: clamp(30px, 4vh, 60px) clamp(20px, 3vw, 40px);
+    padding: 40px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -51,7 +54,7 @@ aside {
     z-index: 100;
 }
 
-.nav-links { list-style: none; margin: 40px 0; }
+.nav-links { list-style: none; margin-top: 40px; }
 .nav-links li { margin: 20px 0; }
 .nav-links a {
     text-decoration: none;
@@ -60,63 +63,52 @@ aside {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 2px;
-    transition: 0.3s;
 }
-.nav-links a.active, .nav-links a:hover { color: var(--accent); }
+.nav-links a.active { color: var(--accent); }
 
-#theme-toggle {
-    background: none;
-    border: 1px solid var(--border);
-    color: var(--secondary);
-    padding: 12px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 0.7rem;
-    text-transform: uppercase;
-}
-
-/* 4. MAIN CONTAINER */
+/* 4. MAIN CONTENT (Fluid) */
 main {
-    margin-left: var(--nav-width);
-    flex: 1; 
+    margin-left: var(--nav-width); /* Prevents content from going under sidebar */
+    flex: 1;
+    width: 100%;
     padding: 0 5%; /* Fluid side margins */
 }
 
-/* 5. SECTION LOGIC */
 section {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: center; /* Centering for Home */
 }
 
-/* Applied to About, Projects, etc. to move them UP */
+/* Move About, Projects, etc. UP */
 .sub-section {
     min-height: auto !important; 
     padding: 100px 0 !important; 
-    display: block !important;
+    display: block !important; /* Content starts at top */
 }
 
-/* 6. TYPOGRAPHY */
-h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); letter-spacing: -2px; line-height: 1.1; margin-bottom: 20px; }
-h2 { font-size: clamp(2rem, 4vw, 3.5rem); margin-bottom: 40px; letter-spacing: -1px; }
+/* 5. TYPOGRAPHY (Fluid Sizes) */
+h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.1; margin-bottom: 20px; }
+h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 40px; }
 .orange-text { color: var(--accent); }
 
-/* 7. ABOUT SECTION (Flexbox for Fluidity) */
+/* 6. ABOUT FLEX (The Overlap Fix) */
 .about-flex {
     display: flex;
-    flex-wrap: wrap; /* Wraps photo under text if screen is too narrow */
+    flex-wrap: wrap; /* CRITICAL: Stacks photo if screen is small */
     gap: 40px;
     align-items: flex-start;
 }
 
-.about-text { flex: 1.5; min-width: 320px; }
-.about-text p { margin-bottom: 20px; color: var(--secondary); font-size: 1.05rem; }
+.about-text {
+    flex: 1; 
+    min-width: 320px; /* Prevents text from becoming a tiny sliver */
+}
 
 .about-photo-container {
-    flex: 1;
-    max-width: 400px;
-    min-width: 280px;
+    flex: 0 0 320px; /* Fixed photo size for stability */
+    max-width: 100%;
     position: relative;
     aspect-ratio: 4/5;
 }
@@ -125,58 +117,52 @@ h2 { font-size: clamp(2rem, 4vw, 3.5rem); margin-bottom: 40px; letter-spacing: -
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 16px;
+    border-radius: 12px;
     position: absolute;
-    transition: opacity 0.4s ease;
+    transition: 0.4s ease;
     border: 1px solid var(--border);
 }
 
 .img-hover { opacity: 0; z-index: 2; }
 .about-photo-container:hover .img-hover { opacity: 1; }
 
-/* 8. GRID SYSTEMS (Skills & Projects) */
+/* 7. GRID (Skills & Projects) */
 .grid, .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    /* Automatically handles 1 or 2 columns based on space */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 25px;
 }
 
 .card, .project-card {
+    padding: 30px;
     background: var(--card-bg);
     border: 1px solid var(--border);
-    padding: 30px;
     border-radius: 12px;
-    transition: 0.3s;
 }
 
-.card:hover, .project-card:hover { border-color: var(--accent); transform: translateY(-5px); }
-
-/* 9. TIMELINE */
-.timeline { border-left: 2px solid var(--border); margin-left: 20px; padding-left: 40px; }
+/* 8. TIMELINE */
+.timeline { border-left: 2px solid var(--border); margin-left: 20px; padding-left: 30px; }
 .timeline-item { position: relative; margin-bottom: 40px; }
 .timeline-dot { 
-    position: absolute; left: -51px; top: 8px; width: 20px; height: 20px; 
+    position: absolute; left: -41px; top: 8px; width: 20px; height: 20px; 
     background: var(--accent); border-radius: 50%; border: 4px solid var(--bg); 
 }
 
-/* 10. MOBILE OVERLAY (Modern Inset) */
+/* 9. MOBILE OVERLAY */
 #mobile-overlay {
     display: none;
     position: fixed;
-    inset: 0; /* Cover everything */
+    inset: 0;
     background: #000;
-    z-index: 9999;
+    z-index: 1000;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 40px;
     text-align: center;
 }
 
-.gold-divider { width: 40px; height: 2px; background: var(--accent); margin: 20px 0; }
-
-/* 11. RESPONSIVENESS */
-@media (max-width: 1100px) {
+@media (max-width: 1024px) {
     #mobile-overlay { display: flex; }
     aside, main { display: none; }
 }
