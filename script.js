@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const options = {
         // rootMargin creates a horizontal "tripwire" near the top of the screen
-        rootMargin: "-15% 0px -80% 0px", 
+        rootMargin: "0% 0px -80% 0px", 
         threshold: 0 
     };
 
