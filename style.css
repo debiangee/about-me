@@ -2,11 +2,11 @@
 :root {
     --bg: #000000;
     --text: #ffffff;
-    --accent: #FFC000; /* Signature Gold/Orange */
+    --accent: #FFC000; 
     --secondary: #a0a0a0;
     --card-bg: #111111;
     --border: #333333;
-    --nav-width: 280px;
+    --nav-width: clamp(240px, 18vw, 280px); /* UPDATED: Fluid width for smaller laptops */
 }
 
 [data-theme="light"] {
@@ -38,7 +38,7 @@ aside {
     height: 100vh;
     position: fixed;
     border-right: 1px solid var(--border);
-    padding: 60px 40px;
+    padding: 60px clamp(20px, 3vw, 40px); /* UPDATED: Fluid padding */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -86,8 +86,8 @@ aside {
 /* 4. MAIN CONTENT AREA */
 main {
     margin-left: var(--nav-width);
-    width: 100%;
-    padding: 0 8%;
+    width: calc(100% - var(--nav-width)); /* UPDATED: Dynamic calculation */
+    padding: 0 6%; /* UPDATED: Slightly less padding for laptop breathing room */
 }
 
 section {
@@ -100,24 +100,25 @@ section {
 
 /* TITLES */
 h1 { 
-    font-size: 4.5rem; font-weight: 800; margin: 0; letter-spacing: -3px; line-height: 1; 
+    font-size: clamp(3rem, 6vw, 4.5rem); /* UPDATED: Text shrinks on smaller laptops */
+    font-weight: 800; margin: 0; letter-spacing: -3px; line-height: 1; 
 }
 
 .orange-text { color: var(--accent); }
 
 h2 { 
-    font-size: 2.8rem; 
+    font-size: clamp(2rem, 4vw, 2.8rem); /* UPDATED: Fluid header */
     margin-bottom: 60px; 
     font-weight: 800; 
     color: var(--text); 
     letter-spacing: -1.5px; 
 }
 
-/* 5. ABOUT SECTION - REFINED */
+/* 5. ABOUT SECTION */
 .about-flex {
     display: flex;
     align-items: flex-start; 
-    gap: 80px;
+    gap: clamp(30px, 5vw, 80px); /* UPDATED: Gap shrinks on laptops */
 }
 
 .about-text {
@@ -147,8 +148,8 @@ h2 {
 
 .about-photo-container {
     position: relative;
-    width: 320px;
-    height: 400px;
+    width: clamp(260px, 25vw, 320px); /* UPDATED: Photo scales down */
+    height: clamp(325px, 32vw, 400px); /* UPDATED: Height scales down */
     cursor: pointer;
 }
 
@@ -168,7 +169,7 @@ h2 {
 .about-photo-container:hover .img-hover { opacity: 1; }
 
 .cta-box {
-    width: 320px; 
+    width: clamp(260px, 25vw, 320px); /* UPDATED: Matches photo width */
     padding: 30px;
     background: var(--card-bg);
     border-top: 4px solid var(--accent);
@@ -236,7 +237,7 @@ h2 {
 /* 7. UPDATED CONTACT SPLIT SECTION */
 .contact-split {
     display: flex;
-    gap: 80px;
+    gap: clamp(30px, 5vw, 80px); /* UPDATED: Fluid gap */
     align-items: flex-start;
 }
 
@@ -258,7 +259,7 @@ h2 {
     border: 1px solid var(--border);
 }
 
-/* SOCIAL CARDS (LINKEDIN & GITHUB) */
+/* SOCIAL CARDS */
 .cta-social-stack {
     display: flex;
     flex-direction: column;
@@ -370,26 +371,52 @@ footer {
     text-align: center;
 }
 
-/* 9. MOBILE RESPONSIVE */
+/* 9. MOBILE COMING SOON OVERLAY (UPDATED: Added this as requested) */
+#mobile-overlay {
+    display: none; 
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: #000000;
+    z-index: 9999; 
+    padding: 40px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.overlay-content h1 {
+    font-size: 2.2rem !important;
+    margin-bottom: 20px;
+}
+
+.overlay-content p {
+    color: var(--secondary);
+    margin-bottom: 30px;
+}
+
+.overlay-logo { font-size: 1.5rem; font-weight: 800; margin-bottom: 20px; }
+.overlay-logo span { color: var(--accent); }
+
+/* MOBILE RESPONSIVE TRIGGER */
 @media (max-width: 1100px) {
-    aside { display: none; }
-    main { margin-left: 0; padding: 0 6%; }
-    .about-flex, .contact-split { flex-direction: column; gap: 40px; }
-    .about-photo-container, .cta-box { width: 100%; max-width: 320px; margin: 0 auto; }
+    #mobile-overlay { display: flex; }
+    aside, main { display: none; } /* Hide the bugged version */
 }
 
 /* PROJECTS & EVENTS GRID */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* UPDATED: minmax 300px works better on small laptops */
+    gap: 30px; /* UPDATED: Slighting tighter gap */
 }
 
 .project-card {
     background: var(--card-bg);
     border: 1px solid var(--border);
     border-radius: 16px;
-    overflow: hidden; /* Ensures image corners match card corners */
+    overflow: hidden; 
     transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
@@ -401,7 +428,7 @@ footer {
 .project-image-wrapper {
     position: relative;
     width: 100%;
-    height: 220px;
+    height: 200px; /* UPDATED: Slightly shorter for laptop screens */
     overflow: hidden;
 }
 
@@ -430,7 +457,7 @@ footer {
 }
 
 .project-content {
-    padding: 30px;
+    padding: 25px; /* UPDATED: Slightly less padding */
 }
 
 .project-tag {
@@ -444,13 +471,13 @@ footer {
 }
 
 .project-content h3 {
-    font-size: 1.4rem;
+    font-size: 1.3rem; /* UPDATED: Fluid sizing */
     margin-bottom: 12px;
     color: var(--text);
 }
 
 .project-content p {
-    font-size: 0.95rem;
+    font-size: 0.9rem; /* UPDATED: Fluid sizing */
     color: var(--secondary);
     line-height: 1.6;
     margin-bottom: 20px;
