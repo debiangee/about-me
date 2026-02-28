@@ -1,4 +1,4 @@
-/* 1. VARIABLES & THEMES */
+/* 1. FLUID VARIABLES */
 :root {
     --bg: #000000;
     --text: #ffffff;
@@ -6,266 +6,124 @@
     --secondary: #a0a0a0;
     --card-bg: #111111;
     --border: #333333;
-    /* Sidebar width scales between 240px and 280px */
-    --nav-width: clamp(240px, 18vw, 280px);
+    /* Sidebar width scales: smaller on laptops, fixed on desktop */
+    --nav-width: clamp(220px, 18vw, 280px);
 }
 
-[data-theme="light"] {
-    --bg: #ffffff;
-    --text: #111111;
-    --secondary: #666666;
-    --card-bg: #fafafa;
-    --border: #eaeaea;
-}
+/* 2. CORE SETUP */
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* 2. CORE RESET */
-* { 
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box; 
-}
-
-html {
-    scroll-behavior: smooth;
-    /* This ensures clicking a link doesn't hide the title under the top of the browser */
-    scroll-padding-top: 60px;
-}
+html { scroll-behavior: smooth; scroll-padding-top: 50px; }
 
 body {
-    font-family: 'Inter', -apple-system, sans-serif;
+    font-family: 'Inter', sans-serif;
     background-color: var(--bg);
     color: var(--text);
-    display: flex;
-    line-height: 1.6;
-    overflow-x: hidden;
+    display: flex; /* Sidebar and Main side-by-side */
+    min-height: 100vh;
 }
 
-/* 3. SIDEBAR NAVIGATION */
+/* 3. SIDEBAR (Stays Fixed) */
 aside {
     width: var(--nav-width);
     height: 100vh;
     position: fixed;
+    left: 0;
+    top: 0;
     border-right: 1px solid var(--border);
-    padding: 60px clamp(20px, 3vw, 40px);
+    padding: 40px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: var(--bg);
-    z-index: 100;
+    background: var(--bg);
 }
 
-.logo { font-size: 1.5rem; font-weight: 800; margin: 0; }
-.logo span { color: var(--accent); }
-
-.nav-links {
-    list-style: none;
-    margin: 60px 0;
-}
-
-.nav-links li { margin: 25px 0; }
-
-.nav-links a {
-    text-decoration: none;
-    color: var(--secondary);
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    transition: 0.3s;
-}
-
-.nav-links a.active, .nav-links a:hover {
-    color: var(--accent);
-}
-
-#theme-toggle {
-    background: none;
-    border: 1px solid var(--border);
-    color: var(--secondary);
-    padding: 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    transition: 0.3s;
-}
-
-#theme-toggle:hover {
-    border-color: var(--accent);
-    color: var(--text);
-}
-
-/* 4. MAIN CONTENT AREA */
+/* 4. MAIN CONTAINER (The "Fluid" Part) */
 main {
     margin-left: var(--nav-width);
-    width: calc(100% - var(--nav-width));
-    padding: 0 6%; /* Balanced padding for smaller laptops */
+    flex: 1; /* Takes up remaining space */
+    width: 100%;
+    max-width: 1400px; /* Prevents text from getting too wide on huge monitors */
+    padding: 0 5%;
 }
 
 section {
+    padding: 80px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+/* Hero Section stays centered */
+#home {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Default centering for Home */
+    justify-content: center;
 }
 
-/* 5. THE "SUB-SECTION" FIX (Moves About, Projects, etc. UP) */
-.sub-section {
-    min-height: auto !important; 
-    padding-top: 80px !important; 
-    padding-bottom: 100px !important;
-    display: block !important; /* Removes vertical centering */
-}
-
-/* 6. TYPOGRAPHY */
-h1 { 
-    font-size: clamp(3rem, 6vw, 4.5rem); 
-    font-weight: 800; 
-    letter-spacing: -3px; 
-    line-height: 1.1;
-    margin-bottom: 20px;
-}
-
-.orange-text { color: var(--accent); }
-
-h2 { 
-    font-size: clamp(2.2rem, 4vw, 2.8rem); 
-    margin-bottom: 40px; 
-    font-weight: 800; 
-    letter-spacing: -1.5px; 
-}
-
-.subtitle {
-    font-size: 1.2rem;
-    color: var(--secondary);
-    max-width: 600px;
-    margin-bottom: 15px;
-}
-
-/* 7. ABOUT SECTION FLEX */
+/* 5. ABOUT FLEXBOX (Fixes the overlapping image) */
 .about-flex {
     display: flex;
+    flex-wrap: wrap; /* Allows image to drop below text if screen is too small */
+    gap: 40px;
     align-items: flex-start;
-    gap: clamp(30px, 5vw, 80px);
 }
 
-.about-text { flex: 1.5; }
-.about-text p { margin-bottom: 20px; color: var(--secondary); font-size: 1.05rem; }
+.about-text {
+    flex: 1; /* Grows to fill space */
+    min-width: 300px; /* Won't get skinnier than this */
+}
 
 .about-photo-container {
+    flex: 0 0 clamp(250px, 25vw, 350px); /* Responsive size for your avatar */
     position: relative;
-    width: clamp(260px, 25vw, 320px);
-    height: clamp(320px, 32vw, 400px);
-    flex-shrink: 0;
 }
 
 .profile-img-new {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
     border-radius: 12px;
-    position: absolute;
-    transition: opacity 0.4s ease;
     border: 1px solid var(--border);
 }
 
-.img-hover { opacity: 0; z-index: 2; }
-.about-photo-container:hover .img-hover { opacity: 1; }
-
-/* 8. PROJECTS GRID */
-.projects-grid {
+/* 6. GRID FOR SKILLS & TOOLS */
+.grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 30px;
+    /* Automatically creates 2 columns, but switches to 1 on small laptops */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
 }
 
-.project-card {
+.card {
+    padding: 30px;
     background: var(--card-bg);
     border: 1px solid var(--border);
-    border-radius: 16px;
-    overflow: hidden;
-    transition: 0.3s ease;
+    border-radius: 12px;
+    transition: border-color 0.3s;
 }
 
-.project-card:hover { transform: translateY(-10px); border-color: var(--accent); }
+.card:hover { border-color: var(--accent); }
 
-.project-image-wrapper { position: relative; height: 220px; overflow: hidden; }
-.project-img { width: 100%; height: 100%; object-fit: cover; }
+/* 7. TYPOGRAPHY (Fluid Font Sizes) */
+h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.1; margin-bottom: 20px; }
+h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 30px; }
+.orange-text { color: var(--accent); }
 
-.project-badge { 
-    position: absolute; top: 15px; right: 15px; 
-    background: var(--accent); color: #000; 
-    padding: 5px 12px; border-radius: 4px; 
-    font-size: 0.7rem; font-weight: 800; 
-}
-
-.project-content { padding: 25px; }
-.project-tag { color: var(--accent); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 10px; display: block; }
-.project-content h3 { margin-bottom: 12px; }
-
-.project-meta { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 15px; }
-.meta-item { font-size: 0.7rem; padding: 4px 10px; background: rgba(255,192,0,0.1); color: var(--accent); border-radius: 4px; }
-
-/* 9. SKILLS GRID */
-.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.card { padding: 30px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; }
-.card h3 { color: var(--accent); margin-bottom: 10px; }
-
-/* 10. EXPERIENCE TIMELINE */
-.timeline { border-left: 2px solid var(--border); margin-left: 20px; padding-left: 40px; }
-.timeline-item { position: relative; margin-bottom: 50px; }
-.timeline-dot { 
-    position: absolute; left: -51px; top: 8px; width: 20px; height: 20px; 
-    background: var(--accent); border-radius: 50%; border: 4px solid var(--bg); 
-}
-.timeline-content { background: var(--card-bg); padding: 25px; border-radius: 12px; border: 1px solid var(--border); }
-.timeline-header { display: flex; justify-content: space-between; margin-bottom: 10px; }
-.timeline-date { font-size: 0.8rem; color: var(--secondary); }
-.company-name { font-weight: 700; color: var(--accent); margin-bottom: 10px; }
-.timeline-content ul { padding-left: 20px; color: var(--secondary); }
-
-/* 11. CONTACT SECTION */
-.contact-split { display: flex; gap: 60px; }
-.contact-left, .contact-right { flex: 1; }
-.cta-social-stack { margin-top: 30px; display: flex; flex-direction: column; gap: 15px; }
-.cta-social-card { 
-    display: flex; align-items: center; gap: 15px; padding: 20px; 
-    background: var(--card-bg); border: 1px solid var(--border); 
-    border-radius: 12px; text-decoration: none; color: inherit; transition: 0.3s;
-}
-.cta-social-card:hover { transform: translateX(10px); border-color: var(--accent); }
-.social-icon-box { width: 40px; height: 40px; background: var(--accent); color: #000; display: flex; align-items: center; justify-content: center; border-radius: 8px; font-weight: 800; }
-
-.email-form { display: flex; flex-direction: column; gap: 15px; }
-.form-group { display: flex; flex-direction: column; gap: 5px; }
-.form-group input, .form-group textarea { 
-    padding: 15px; background: #000; border: 1px solid var(--border); 
-    color: #fff; border-radius: 8px; font-family: inherit; 
-}
-.send-btn { background: var(--accent); border: none; padding: 15px; font-weight: 800; border-radius: 8px; cursor: pointer; }
-
-/* 12. FOOTER */
-footer { padding: 50px 0; border-top: 1px solid var(--border); text-align: center; color: var(--secondary); font-size: 0.9rem; }
-
-/* 13. MOBILE OVERLAY */
+/* 8. MOBILE OVERLAY */
 #mobile-overlay {
-    display: none; 
+    display: none;
     position: fixed;
-    top: 0; left: 0;
-    width: 100vw; height: 100vh;
+    inset: 0;
     background: #000;
     z-index: 10000;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 40px;
     text-align: center;
+    padding: 20px;
 }
 
-.gold-divider { width: 50px; height: 2px; background: var(--accent); margin: 20px 0; }
-
-/* 14. RESPONSIVENESS (Trigger Overlay) */
-@media (max-width: 1100px) {
+/* Trigger Mobile Screen */
+@media (max-width: 1024px) {
     #mobile-overlay { display: flex; }
     aside, main { display: none; }
 }
