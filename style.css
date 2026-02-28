@@ -384,3 +384,29 @@ footer {
     aside, main { display: none; }
     body { overflow: hidden; }
 }
+
+/* Custom Spacing Classes */
+
+/* Moves section up significantly (Great for Projects) */
+.sub-1 {
+    min-height: auto !important;
+    padding-top: 40px !important;   /* Very close to the top */
+    padding-bottom: 60px !important;
+    display: block !important;
+}
+
+/* Moderate move up (Great for About Me) */
+.sub-2 {
+    min-height: auto !important;
+    padding-top: 80px !important;   /* Medium gap */
+    padding-bottom: 80px !important;
+    display: block !important;
+}
+
+/* Subtle move up (Great for Experience or Skills) */
+.sub-3 {
+    min-height: auto !important;
+    padding-top: 120px !important;  /* Larger gap */
+    padding-bottom: 100px !important;
+    display: block !important;
+}
