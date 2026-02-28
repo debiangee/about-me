@@ -17,9 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 3. MANUAL OFFSET SCROLL SPY (BEST FOR LAPTOPS) ---
     const navLinks = document.querySelectorAll(".nav-links a");
 
-    // TUNE THESE NUMBERS: 
-    // Higher number = Highlights EARLIER (further down the page)
-    // Lower number = Highlights LATER (closer to the top)
     const sectionOffsets = {
         'home': 100,
         'about': 200,
@@ -33,23 +30,19 @@ document.addEventListener('DOMContentLoaded', () => {
         const scrollPos = window.pageYOffset || document.documentElement.scrollTop;
         let currentSection = "";
 
-        // Loop through each ID in our manual list
         for (const id in sectionOffsets) {
             const element = document.getElementById(id);
             if (element) {
-                // Check if the top of the section (minus your custom offset) has passed the scroll point
                 if (scrollPos >= element.offsetTop - sectionOffsets[id]) {
                     currentSection = id;
                 }
             }
         }
 
-        // Force 'Contact' if user is at the very bottom of the page
         if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight - 5) {
             currentSection = "contact";
         }
 
-        // Update Nav Links
         navLinks.forEach(link => {
             link.classList.remove("active");
             if (link.getAttribute("href") === `#${currentSection}`) {
@@ -58,10 +51,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // Listen for scrolling
     window.addEventListener("scroll", handleScrollSpy);
 
-    // FIX FOR CLICKING: Force highlight immediately on click
     navLinks.forEach(link => {
         link.addEventListener("click", function() {
             navLinks.forEach(l => l.classList.remove("active"));
@@ -69,7 +60,30 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- 4. EMAILJS FORM SUBMISSION ---
+    // --- 4. NEW: CAROUSEL LOGIC ---
+    // This looks for the IDs we added to your HTML
+    const projectGrid = document.getElementById('projectGrid');
+    const nextBtn = document.getElementById('nextBtn');
+    const prevBtn = document.getElementById('prevBtn');
+
+    if (projectGrid && nextBtn && prevBtn) {
+        const handleCarouselScroll = (direction) => {
+            // Automatically detect width of one card + the gap (30px)
+            const firstCard = projectGrid.querySelector('.project-card');
+            if (firstCard) {
+                const scrollAmount = firstCard.offsetWidth + 30; 
+                projectGrid.scrollBy({
+                    left: direction === 'next' ? scrollAmount : -scrollAmount,
+                    behavior: 'smooth'
+                });
+            }
+        };
+
+        nextBtn.addEventListener('click', () => handleCarouselScroll('next'));
+        prevBtn.addEventListener('click', () => handleCarouselScroll('prev'));
+    }
+
+    // --- 5. EMAILJS FORM SUBMISSION ---
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
         contactForm.addEventListener('submit', function(event) {
